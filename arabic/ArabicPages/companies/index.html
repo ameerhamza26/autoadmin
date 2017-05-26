@@ -1,0 +1,144 @@
+ 
+<header-bar-supreme-arabic></header-bar-supreme-arabic>
+<left-side-bar-arabic></left-side-bar-arabic>
+  <body class="hold-transition skin-red sidebar-mini">
+    <div class="wrapper">
+
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1 dir="rtl">
+            الشركات &nbsp;&nbsp;
+            <small dir="rtl">قائمة, بحث, رأي, وإدارة الشركات الشريكة</small>
+          </h1>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            
+            <div class="row">
+                <div class="col-md-12">
+                          <div id="search-panel" class="box box-default box-solid">
+                        <div class="box-header with-border">
+                            <div class="pull-right box-tools">
+                                <button class="btn btn-box-tool refresh-btn" style="float: left" data-toggle="tooltip" title="Reload"><i class="fa fa-refresh"></i></button>
+                                <button type="submit" class="btn btn-box-tool btn-sm" data-widget='collapse' data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
+                            </div><!-- /. tools -->
+                            <i class="fa fa-search" style="float: left"></i>
+                            <h3 class="box-title" style="float: left">بحث</h3>
+                        </div><!-- /.box-header -->
+                        <div class="box-body" style="height:80px;overflow:hidden">
+                            <div class="form-group col-md-3">
+                                <label>Name</label>
+                                <input type="text" ng-model="searchCompanyName" class="form-control" placeholder="Name" maxlength="32" />
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label>Contact Person Name</label>
+                                <input type="text" ng-model="searchContactPerson" class="form-control" placeholder="Contact Person Name" maxlength="32" />
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="box-footer">
+                            <div class="pull-left">
+                                <!--<a id="search-collapse" href="#">
+                                    <span id="more"><i class="fa fa-chevron-circle-down"></i> More search options</span>
+                                    <span id="less"><i class="fa fa-chevron-circle-up"></i> Less search options</span>
+                                </a>-->
+                            </div>
+                            <div class="pull-right">
+                                <input type="submit" class="btn btn-primary" style="width:100px" value="بحث" ng-click="searchCompanyByParemeter(searchCompanyName,searchContactPerson)"/>
+                                <button id="resetButton" type="button"  ng-click="fieldsReset()" class="btn" style="width:100px;">إعادة تعيين
+</button>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div><!-- /.box -->
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="box box-primary">
+                        <div class="box-header">
+                            <div class="pull-right box-tools">
+                                <button  class="btn btn-danger" ui-sref="addCompany"><i class="fa fa-file-o"></i> اضف جديد</button>
+                                <!--<button id="exportToExcel" name="exportToExcel" class="btn btn-primary"><i class="fa fa-file-excel-o"></i> تصدير الىتفوق </button>
+                                <button class="btn"><i class="fa fa-print"></i> طباعة </button>-->
+                            </div><!-- /. tools -->
+                            <i class="fa fa-building"></i>
+                            <h3 class="box-title">الشركات</h3>
+                        </div><!-- /.box-header -->
+
+                        <div class="box-body table-responsive">
+                            <div class="paging-panel">
+                                       صفحة                             
+                                        <button id="prev" type="submit" title="Previous Page" class="paging-button" ng-click="dec_value(inc_dec)"><i class="fa fa-caret-left"></i></button>
+                                        <input type="text" class="form-control page-number" value="1" ng-model="inc_dec" ng-change="pageChangeValue(inc_dec)" /> 
+                                        <button id="next" type="submit" title="Next Page" class="paging-button" ng-click="inc_value(inc_dec)"><i class="fa fa-caret-right"></i></button>
+                                من <span class="number">10</span> الصفحات|
+                                تبين &nbsp;
+                                   <select class="form-control psize" style="width:80px;" ng-model="page_number" ng-change="pageChange(page_number)"  ng-options="limit.value as limit.text for limit in limits" ng-init="page_number='10'">
+                                </select>
+                            </div>
+                            <div class="clearfix"></div>
+
+
+                            <table id="search-results" class="table table-bordered table-hover dataTable click-rows">
+                                <thead>
+                                    <tr>
+                                        <th class="bg-gray-light sorting">هوية شخصية</th>
+                                        <th class="bg-gray-light sorting_asc">اسم</th>
+                                        <th class="bg-gray-light sorting">الشخص الذي يمكن الاتصال به</th>
+                                        <th class="bg-gray-light sorting">مجموع الدعوات</th>
+                                        <th class="bg-gray-light sorting">إجمالي مسجل</th>
+                                        <th class="bg-gray-light sorting">إجمالي تحويله</th>
+                                        <th class="bg-gray-light sorting">وكلاء مبيعات</th>
+                                        <th class="bg-gray-light sorting">حالة الحساب</th>
+                                    </tr>
+                                </thead>
+                             
+                                <tbody>
+                              <tr ng-if="!isDataLoading" ng-repeat="x in companies" ng-click="getSingleCompany(x.Id)">
+                                        <td>{{x.Id}}</td>
+                                        <td>{{x.CompanyName}}</td>
+                                        <td>{{x.ContactPerson}}</td>
+                                        <td>{{x.TotalRerrals}}</td>
+                                        <td>{{TotalRegistered}}</td>
+                                        <td>{{x.TotalConverted}}</td>
+                                        <td>{{x.TotalSalesAgents}}</td>
+                                        <td class="text-green"><i class="fa fa-circle"></i> {{x.AccountStatus}}</td>
+                                    </tr>
+                                    <!--<tr>
+                                        <td colspan="8" rowspan="2" style="text-align:center">No record found</td>
+                                    </tr>-->
+                            </table>
+                            <br/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </section><!-- /.content -->
+           <div ng-if="isDataLoading" style="width: 100px; margin: auto;">
+                                        <img src="../assets/loader.gif" style="width: 100px; height: 100px;">
+                                    </div>
+      </div><!-- /.content-wrapper -->
+     <footer-bar-arabic></footer-bar-arabic>
+
+    </div><!-- ./wrapper -->
+    
+    <script type="text/javascript">
+        $("[data-mask]").inputmask();
+        $('.datepicker').datepicker({
+            autoclose: true,
+            format: 'dd/mm/yyyy'
+        });
+        
+        $('#search-results tbody tr').click(function() {
+            var recid = $(this).find('td:first').text();
+            
+            window.location.href = '/pages/companies/detail.html?id=' + recid;
+        });
+    </script>
+  </body>
+

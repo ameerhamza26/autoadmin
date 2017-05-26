@@ -1,0 +1,211 @@
+ <header-bar-supreme-english></header-bar-supreme-english>
+<left-side-bar-english></left-side-bar-english>
+
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1>
+            Mobile App User
+            <small>App user profile information</small>
+          </h1>
+          <ol class="breadcrumb">
+            <li><a><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">Mobile App Users</li>
+          </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            
+            <div class="box box-default">
+                <div class="box-header" *ngIf="useRouteParams === true">
+                    <h3 class="box-title">Mobile App User</h3>
+                    <div class="box-tools pull-right">
+                        <button *ngIf="approverData" class="btn btn-primary" ng-click="navigateToUpdate(singleUser.Id)"><i class="fa fa-edit"></i>Modify</button>
+                        <!--<button *ngIf="approverData" class="btn btn-danger"  ng-click="deleteUser(singleUser.Id)"><i class="fa fa-trash"></i> Delete</button>-->
+                                            <div class="btn btn-primary" ng-class="{'spinner-wave' : loaderr == true}" ng-click="deleteUser(singleUser.Id)" ><span ng-if="!loaderr"> <i class="fa fa-trash"></i> Delete</span>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+</div>
+                        <!--<button class="btn" onclick="window.print()"><i class="fa fa-print"></i> Print</button>-->
+                        <button class="btn" ui-sref="mobileappusers"><i class="fa fa-close"></i> Close</button>
+                    </div>
+                </div>
+                <div class="box-body">
+                      <div class="alert alert-success" ng-show="showSuccessAlert">
+                          <button type="button" class="close" data-ng-click="switchBool('showSuccessAlert')">×</button>
+                          <strong>User Deleted Sucessfully</strong> 
+                    </div>
+                     <div class="alert alert-danger" ng-show="showErrorAlert">
+                          <button type="button" class="close" data-ng-click="switchBool('showErrorAlert')">×</button>
+                          <strong>{{errorText}}</strong> 
+                    </div>
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#detail-form-tab" data-toggle="tab">Profile</a></li>
+                        <!--<li><a href="#promotions-tab" data-toggle="tab">Promotions</a></li>
+                        <li><a href="#sales-history-tab" data-toggle="tab">Sales History</a></li>-->
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="detail-form-tab">
+                            <div class="row">
+                                  <div ng-if="isDataLoading" style="width: 100px; margin: auto;">
+                                        <img src="assets/loader.gif" style="width: 100px; height: 100px;">
+                                    </div>
+                                <div class="col-md-12">
+                                    <h3>Profile Information</h3>
+                                </div>
+                            </div>
+                            <div class="row description-view">
+                                <div class="col-md-6">
+                                    <dl class="dl-horizontal">
+                                        <dt>Name</dt>
+                                        <!--<dd>{{singleUser.FirstName +" "+singleUser.LastName}}</dd>-->
+                                        <dd><span>{{singleUser.FirstName}}</span><span ng-if="singleUser.LastName">{{" "+singleUser.LastName}}</span></dd>
+                                        <dt>Mobile Number</dt>
+                                        <dd>{{singleUser.MobileNumber}}<i class="fa fa-check text-green" title="Verified"></i></dd>
+                                        <dt>Email Address</dt>
+                                        <dd>{{singleUser.EmailAddress}}<i class="fa fa-check text-green" title="Verified"></i></dd>
+                                        <dt>Status</dt>
+                                        <dd class="text-green"><i class="fa fa-circle"></i> {{singleUser.Status}}</dd>
+                                        <dt>Registered On</dt>
+                                        <dd>{{singleUser.RegisteredOn}}</dd>
+                                    </dl>
+                                </div>
+                                <div class="col-md-6">
+                                    <dl class="dl-horizontal">
+                                        <dt>Referrer (Company)</dt>
+                                        <dd>{{singleUser.ReferrerCompany}}</dd>
+                                        <dt>Referrer (Agent)</dt>
+                                        <dd>{{singleUser.ReferrerAgent}}</dd>
+                                    </dl>   
+                                </div>
+                            </div>
+                            <hr/>
+                           
+                        </div>
+                        
+                        <div class="tab-pane" id="promotions-tab" style="padding:5px 15px;">
+                            <div class="row">
+                                <div class="col-sm-12 bg-green offers-header">
+                                    <h4>UPCOMING OFFERS</h4>
+                                </div>
+                                <div class="col-sm-12 offer-item">
+                                    <div class="col-sm-10 bg-light-green offer-description">
+                                      <b>OFFER TITLE</b>
+                                      <p>Offer description comes here.</p>
+                                    </div>
+                                    <div class="col-sm-2 offer-coupon">
+                                      <span class="badge bg-red">TEW12REX</span>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <!--<div class="col-sm-12 no-offer">
+                                    No upcoming offers
+                                </div>-->
+                                <div class="col-sm-12 bg-yellow offers-header">
+                                    <h4>EARNED OFFERS</h4>
+                                </div>
+                                <div class="col-sm-12 offer-item">
+                                    <div class="col-sm-10 bg-light-yellow offer-description">
+                                      <b>OFFER TITLE</b>
+                                      <p>Offer description comes here.</p>
+                                    </div>
+                                    <div class="col-sm-2 offer-coupon">
+                                      <span class="badge bg-red">AUTOTEK2</span>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <!--<div class="col-sm-12 no-offer">
+                                    No earned offers
+                                </div>-->
+                                
+                                <div class="col-sm-12 bg-dark-gray offers-header">
+                                    <h4>CONSUMED OFFERS</h4>
+                                </div>
+                                <div class="col-sm-12 offer-item">
+                                    <div class="col-sm-10 bg-gray-light offer-description">
+                                      <b>OFFER TITLE</b>
+                                      <p>Offer description comes here.</p>
+                                    </div>
+                                    <div class="col-sm-2 offer-coupon">
+                                      <span class="badge bg-red">AUTOTEK1</span>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--<div class="tab-pane" id="sales-history-tab">
+                            <table id="sales-history-results" class="table table-bordered dataTable">
+                                <thead>
+                                    <tr>
+                                        <th class="bg-gray-light" style="width:30px">#</th>
+                                        <th class="bg-gray-light">Order Number</th>
+                                        <th class="bg-gray-light sorting_desc">Order Date</th>
+                                        <th class="bg-gray-light ">Order Value (SAR)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td style="font-weight:bold">1</td>
+                                        <td>AO-513567-12330</td>
+                                        <td>May 20, 2016 04:35 PM</td>
+                                        <td>1,560.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-weight:bold">1</td>
+                                        <td>AO-513567-12330</td>
+                                        <td>May 20, 2016 04:35 PM</td>
+                                        <td>1,560.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-weight:bold">1</td>
+                                        <td>AO-513567-12330</td>
+                                        <td>May 20, 2016 04:35 PM</td>
+                                        <td>1,560.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-weight:bold">1</td>
+                                        <td>AO-513567-12330</td>
+                                        <td>May 20, 2016 04:35 PM</td>
+                                        <td>1,560.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-weight:bold">1</td>
+                                        <td>AO-513567-12330</td>
+                                        <td>May 20, 2016 04:35 PM</td>
+                                        <td>1,560.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-weight:bold">1</td>
+                                        <td>AO-513567-12330</td>
+                                        <td>May 20, 2016 04:35 PM</td>
+                                        <td>1,560.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-weight:bold">1</td>
+                                        <td>AO-513567-12330</td>
+                                        <td>May 20, 2016 04:35 PM</td>
+                                        <td>1,560.00</td>
+                                    </tr>-->
+                                    
+                                    
+                                    <!--
+                                        OR (WHEN NO RECORD FOUND)
+                                        <tr>
+                                        <td colspan="3" rowspan="2" style="text-align:center">No record found</td>
+                                    </tr>-->
+                                <!--</tbody>
+                            </table>-->
+                        <!--</div>-->
+                    </div>
+                    <br/>
+                </div>
+            </div>
+            
+        </section><!-- /.content -->
+      </div><!-- /.content-wrapper -->
+    <footer-bar-english></footer-bar-english>

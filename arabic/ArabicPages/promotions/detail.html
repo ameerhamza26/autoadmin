@@ -1,0 +1,94 @@
+  <header-bar-supreme-arabic></header-bar-supreme-arabic>
+<left-side-bar-arabic></left-side-bar-arabic>
+
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper" dir="ltr">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1>
+            ترقية وظيفية 
+            <small>معلومات تعريف الترويج</small>
+          </h1>
+          <ol class="breadcrumb">
+            <li><a ><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">الترقيات</li>
+          </ol>
+        </section>
+
+        <!-- Main content -->
+      <section class="content">
+            
+            <div class="box box-default">
+                <div class="box-header" *ngIf="useRouteParams === true">
+                    
+                    <h3 class="box-title">ترقية وظيفية</h3>
+                       <div ng-if="isDataLoading" style="width: 100px; margin: auto;">
+                            <img src="../assets/loader.gif" style="width: 100px; height: 100px;">
+                        </div>
+                    <div class="box-tools pull-right">
+                        <button *ngIf="approverData" class="btn btn-primary" ng-click="navigateToUpdate(Singlepromotion.Id)"><i class="fa fa-edit"></i>تعديل</button>
+                        <div class="btn btn-primary" ng-class="{'spinner-wave' : loaderr == true}" ng-click="deletePromotions(Singlepromotion.Id)" ><span ng-if="!loaderr"> <i class="fa fa-trash"></i> حذف</span>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                        <!--<button class="btn" onclick="window.print()"><i class="fa fa-print"></i> طباعة</button>-->
+                        <button class="btn" ui-sref="promotionsa"><i class="fa fa-close"></i> أغلق</button>
+                    </div>
+                </div>
+                <div class="box-body">
+                      <div class="alert alert-success" ng-show="showSuccessAlert">
+                          <button type="button" class="close" data-ng-click="switchBool('showSuccessAlert')">×</button>
+                          <strong>Promotion Deleted Sucessfully</strong> 
+                    </div>
+                     <div class="alert alert-danger" ng-show="showErrorAlert">
+                          <button type="button" class="close" data-ng-click="switchBool('showErrorAlert')">×</button>
+                          <strong>{{errorText}}</strong> 
+                    </div>
+                    <div class="row description-view">
+                        <div class="col-sm-12">
+                            <dl ng-if="!isDataLoading" class="dl-horizontal">
+                                <dt>Title English</dt>
+                                <dd>{{Singlepromotion.Title_EN}}</dd>
+                                <dt>Title عربي</dt>
+                                <dd>{{Singlepromotion.Title_AR}}</dd>
+                                <dt>Status</dt>
+                                <dd class="text-green"><i class="fa fa-circle"></i> {{Singlepromotion.Status}}</dd>
+                                <dt>Created On</dt>
+                                <dd>{{Singlepromotion.CreatedOn}}</dd>
+                                <dt>Expires On</dt>
+                                <dd>{{Singlepromotion.ExpiresOn}}</dd>
+                            </dl>
+                        </div>
+                        <hr/>
+                        <div class="col-sm-12">
+                            <h4 style="margin-left: 10px;">تعريف معايير الترويج</h4>
+                            <dl class="dl-horizontal">
+                                <dt>Trigger</dt>
+                                <dd>{{Singlepromotion.Trigger}}</dd>
+                                <!--<dt>Parameters</dt>
+                                <dd>Number of friends = 20</dd>
+                                <dd>In last n days = 30 days</dd>-->
+                                <dt>Coupon Source</dt>
+                                <dd>{{Singlepromotion.CouponSource}}</dd>
+                            </dl>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            
+        </section<!-- /.content -->
+      </div><!-- /.content-wrapper -->
+      
+    
+    <script type="text/javascript">
+        $("[data-mask]").inputmask();
+        $('.datepicker').datepicker({
+            autoclose: true,
+            format: 'dd/mm/yyyy'
+        });
+    </script>
+ 

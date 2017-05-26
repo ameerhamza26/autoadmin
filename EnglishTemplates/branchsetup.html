@@ -1,0 +1,388 @@
+<header-bar-supreme-english></header-bar-supreme-english>
+<left-side-bar-english></left-side-bar-english>
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Branch Setup
+            <!-- <small>Add mobile app user profile</small> -->
+          </h1>
+        <ol class="breadcrumb">
+            <li><a><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">Branch Setup</li>
+        </ol>
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <div class="box box-default">
+            <div class="box-body">
+                <ul class="nav nav-tabs">
+                    <li ng-class={'active':tabs[0]}><a ng-click="tabclick(0)" data-toggle="tab">Main info</a></li>
+                    <li ng-class={'active':tabs[1]}><a ng-click="tabclick(1)" data-toggle="tab">Available Services</a></li>
+                    <li ng-class={'active':tabs[2]}><a ng-click="tabclick(2)" data-toggle="tab">Working Days</a></li>
+                    <li ng-class={'active':tabs[3]}><a ng-click="tabclick(3)" data-toggle="tab">Shifts</a></li>
+                </ul>
+                <div class="tab-content" ng-class="{'inactive-tabs':!tabs[0]}">
+                    <div class="tab-pane" ng-class="{'active': tabs[0],'inactive-tabs':!tabs[0]}" id="branchform1">
+                        <div class="form-horizontal">
+                            <div class="row form-group">
+                                <label for="inputName" class="col-sm-2 control-label">Name (English)</label>
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control" placeholder="Name (English)" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <label for="inputName" class="col-sm-2 control-label">Name (Arabic)</label>
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control" placeholder="Name (Arabic)" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <label for="inputName" class="col-sm-2 control-label">Address</label>
+                                <div class="col-sm-4">
+                                    <textarea rows="4" class="form-control" placeholder="Address" autocomplete="off"></textarea>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <label for="inputName" class="col-sm-2 control-label">GPS (Longitude)</label>
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control" placeholder="GPS (Longitude)" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <label for="inputName" class="col-sm-2 control-label">GPS (Latitude)</label>
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control" placeholder="GPS (Latitude)" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <label for="inputName" class="col-sm-2 control-label">City</label>
+                                <div class="col-sm-4">
+                                    <select class="form-control">
+                                        <option value="? undefined:undefined ?"></option>
+                                        <option value="Active">Karachi</option>
+                                        <option value="Inactive">Lahore</option>
+                                        <option value="Inactive">Islamabad</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <label class="col-sm-2 control-label"></label>
+                                <div class="col-sm-4">
+                                    <div class="btn btn-primary" ng-class="{'spinner-wave' : loaderr == true}" ng-click="register()">
+                                        <!-- ngIf: !loaderr --><span ng-if="!loaderr" class="ng-scope"> <i class="fa fa-save"></i> Save</span>
+                                        <!-- end ngIf: !loaderr -->
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr/>
+                        <!--<div class="row">
+                                <div class="col-md-12">
+                                    <h3>Reset Password</h3>
+                                    <a id="reset-password" class="text-red" style="text-decoration:underline"><strong>Click here to reset this user's password</strong></a>
+                                </div>
+                            </div>-->
+                    </div>
+                </div>
+                <div class="tab-content" ng-class="{'inactive-tabs':!tabs[1]}">
+                    <div class="tab-pane" ng-class="{'active': tabs[1],'inactive-tabs':!tabs[1]}" id="branchform2">
+                        <div class="form-horizontal">
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <table class="table table-bordered table-hover dataTable">
+                                    <thead>
+                                        <tr>
+                                            <th class="bg-gray-light sorting">Select</th>
+                                            <th class="bg-gray-light sorting">Service Title</th>
+                                            <th class="bg-gray-light sorting">Duration</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox">
+                                            </td>
+                                            <td>Washing</td>
+                                            <td>30 minutes</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox">
+                                            </td>
+                                            <td>Oil Change</td>
+                                            <td>45 minutes</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox">
+                                            </td>
+                                            <td>Service 3</td>
+                                            <td>39 minutes</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox">
+                                            </td>
+                                            <td>Service 4</td>
+                                            <td>40 minutes</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox">
+                                            </td>
+                                            <td>Service 5</td>
+                                            <td>41 minutes</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox">
+                                            </td>
+                                            <td>Service 6</td>
+                                            <td>42 minutes</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <label class="col-sm-2 control-label"></label>
+                            <div class="col-sm-4">
+                                <div class="btn btn-primary pull-right" ng-class="{'spinner-wave' : loaderr == true}" ng-click="register()">
+                                    <!-- ngIf: !loaderr --><span ng-if="!loaderr" class="ng-scope"> <i class="fa fa-save"></i> Save</span>
+                                    <!-- end ngIf: !loaderr -->
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-content" ng-class="{'inactive-tabs':!tabs[2]}">
+                    <div class="tab-pane" ng-class="{'active': tabs[2]}" id="branchform2">
+                        <div class="form-horizontal">
+                            <div class="row form-group">
+                                <div class="col-md-6">
+                                    <label for="inputName" class="col-md-4 control-label">Start Date</label>
+                                    <div class="col-md-8 input-group" style="padding:0px 15px">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
+                                        <input type="text" ng-model="addPromotion.ExpiresOn" class="form-control datepicker" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask="" autocomplete="off">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="inputName" class="col-md-4 control-label">End Date</label>
+                                    <div class="col-md-8 input-group" style="padding:0px 15px">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
+                                        <input type="text" ng-model="addPromotion.ExpiresOn" class="form-control datepicker" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask="" autocomplete="off">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <label class="col-sm-2 control-label"></label>
+                                <div class="col-sm-10">
+                                    <button class="btn btn-danger pull-right" ui-sref="addMobileUser" href="#/addMobileUser"><i class="fa fa-file-o"></i> Add</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <table class="table table-bordered table-hover dataTable">
+                                <thead>
+                                    <tr>
+                                        <th class="bg-gray-light sorting">Start Date</th>
+                                        <th class="bg-gray-light sorting">End Date</th>
+                                        <th class="bg-gray-light sorting"></th>
+                                        <th class="bg-gray-light sorting"></th>
+                                        <th class="bg-gray-light sorting"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>23/06/2017</td>
+                                        <td>30/06/2017</td>
+                                        <td></td>
+                                        <td><a href="#">Delete</a></td>
+                                        <td><a href="#">Update</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>23/06/2017</td>
+                                        <td>30/06/2017</td>
+                                        <td></td>
+                                        <td><a href="#">Delete</a></td>
+                                        <td><a href="#">Update</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="form-horizontal">
+                            <div class="row form-group">
+                                <div class="col-md-6">
+                                    <label for="inputName" class="col-md-4 control-label">Select Day</label>
+                                    <div class="col-md-8">
+                                        <input type="text" class="form-control" placeholder="Select Day" autocomplete="off">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="inputName" class="col-md-4 control-label">Shift Title</label>
+                                    <div class="col-md-8">
+                                        <input type="text" class="form-control" placeholder="Shift Time" autocomplete="off">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-md-6">
+                                    <label for="inputName" class="col-md-4 control-label">Start Time</label>
+                                    <div class="col-md-8">
+                                        <input type="text" class="form-control" placeholder="Start Time" autocomplete="off">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="inputName" class="col-md-4 control-label">End Time</label>
+                                    <div class="col-md-8">
+                                        <input type="text" class="form-control" placeholder="Edit Time" autocomplete="off">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <label class="col-sm-2 control-label"></label>
+                                <div class="col-sm-10">
+                                    <button class="btn btn-danger pull-right" ui-sref="addMobileUser" href="#/addMobileUser"><i class="fa fa-file-o"></i> Add</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <table class="table table-bordered table-hover dataTable">
+                                <thead>
+                                    <tr>
+                                        <th class="bg-gray-light sorting">Shift Title</th>
+                                        <th class="bg-gray-light sorting">Start Date</th>
+                                        <th class="bg-gray-light sorting">End Date</th>
+                                        <th class="bg-gray-light sorting"></th>
+                                        <th class="bg-gray-light sorting"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Morning</td>
+                                        <td>23/06/2017</td>
+                                        <td>30/06/2017</td>
+                                        <td></td>
+                                        <td><a href="#">Delete</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Evening</td>
+                                        <td>23/06/2017</td>
+                                        <td>30/06/2017</td>
+                                        <td></td>
+                                        <td><a href="#">Delete</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="row form-group">
+                            <label class="col-sm-2 control-label"></label>
+                            <div class="col-sm-10">
+                                <div class="btn btn-primary pull-right" ng-class="{'spinner-wave' : loaderr == true}" ng-click="register()">
+                                    <!-- ngIf: !loaderr --><span ng-if="!loaderr" class="ng-scope"> <i class="fa fa-save"></i> Save</span>
+                                    <!-- end ngIf: !loaderr -->
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-content" ng-class="{'inactive-tabs':!tabs[3]}">
+                    <div class="tab-pane" ng-class="{'active': tabs[3]}">
+                        <div class="form-horizontal">
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <table class="table table-bordered table-hover dataTable">
+                                    <thead>
+                                        <tr>
+                                            <th class="bg-gray-light sorting">Select</th>
+                                            <th class="bg-gray-light sorting">Day</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox">
+                                            </td>
+                                            <td>Monday</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox">
+                                            </td>
+                                            <td>Tuesday</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox">
+                                            </td>
+                                            <td>Wednessday</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox">
+                                            </td>
+                                            <td>Thursday</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox">
+                                            </td>
+                                            <td>Friday</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox">
+                                            </td>
+                                            <td>Saturday</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <label class="col-sm-2 control-label"></label>
+                            <div class="col-sm-2">
+                                <div class="btn btn-primary pull-right" ng-class="{'spinner-wave' : loaderr == true}" ng-click="register()">
+                                    <!-- ngIf: !loaderr --><span ng-if="!loaderr" class="ng-scope"> <i class="fa fa-save"></i> Save</span>
+                                    <!-- end ngIf: !loaderr -->
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br/>
+            </div>
+        </div>
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+<footer-bar-english></footer-bar-english>

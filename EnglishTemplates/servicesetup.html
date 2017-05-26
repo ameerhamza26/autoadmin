@@ -1,0 +1,72 @@
+<header-bar-supreme-english></header-bar-supreme-english>
+<left-side-bar-english></left-side-bar-english>
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Service Setup
+            <!-- <small>Add mobile app user profile</small> -->
+          </h1>
+        <ol class="breadcrumb">
+            <li><a><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">Service Setup</li>
+        </ol>
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <div class="box box-default">
+            <div class="box-body">
+                <div class="form-horizontal">
+                    <div class="row form-group">
+                        <label for="inputName" class="col-sm-2 control-label">Service Title (English)</label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" placeholder="Service Title (English)" autocomplete="off">
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label for="inputName" class="col-sm-2 control-label">Service Title (Arabic)</label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" placeholder="Service Title (Arabic)" autocomplete="off">
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label for="inputName" class="col-sm-2 control-label">Duration (min)</label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" placeholder="Duration (min)" autocomplete="off">
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label for="inputName" class="col-sm-2 control-label">Service Description (English)</label>
+                        <div class="col-sm-4">
+                            <textarea rows="4" class="form-control" placeholder="Service Description (English)" autocomplete="off"></textarea>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label for="inputName" class="col-sm-2 control-label">Service Description (Arabic)</label>
+                        <div class="col-sm-4">
+                            <textarea rows="4" class="form-control" placeholder="Service Description (Arabic)" autocomplete="off"></textarea>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label class="col-sm-2 control-label"></label>
+                        <div class="col-sm-4">
+                            <div class="btn btn-primary" ng-class="{'spinner-wave' : loaderr == true}" ng-click="register()">
+                                <!-- ngIf: !loaderr --><span ng-if="!loaderr" class="ng-scope"> <i class="fa fa-save"></i> Save</span>
+                                <!-- end ngIf: !loaderr -->
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+<footer-bar-english></footer-bar-english>

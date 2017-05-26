@@ -1,0 +1,62 @@
+  <!-- Left side column. contains the logo and sidebar -->
+
+      <aside class="main-sidebar">
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar">
+          <!-- Sidebar user panel -->
+          <div class="user-panel">
+            <div class="pull-left image">
+              <img src="/dist/img/avatar-blank.jpg" class="img-circle" alt="User Image">
+            </div>
+            <div class="pull-left info">
+              <p>مدير</p>
+              <a><i class="fa fa-circle text-success"></i> على الانترنت</a>
+            </div>
+          </div>
+          
+          <!-- sidebar menu: : style can be found in sidebar.less -->
+          <ul class="sidebar-menu">
+            <li class="header">الملاحة الرئيسية</li>
+            <li ng-class={'active':$root.actives[0]}>
+              <a ng-click="$root.navigateState('dashboarda')">
+                <i class="fa fa-dashboard"></i> <span>لوحة القيادة</span> <i class="fa fa-angle-right pull-right" style="text-align:center"></i>
+              </a>
+            </li>
+            <li ng-class={'active':$root.actives[1]}>
+              <a  ng-click="$root.navigateState('appusersa')">
+                <i class="fa fa-mobile"></i> <span>المحمول للمستخدمين التطبيقات</span> <i class="fa fa-angle-right pull-right" style="text-align:center"></i>
+              </a>
+            </li>
+            <li ng-class={'active':$root.actives[2]}>
+              <a ng-click="$root.navigateState('companiesa')">
+                <i class="fa fa-building"></i> <span>الشركات</span> <i class="fa fa-angle-right pull-right" style="text-align:center"></i>
+              </a>
+            </li>
+            <li ng-class={'active':$root.actives[3]}>
+              <a  ng-click="$root.navigateState('agentsa')">
+                <i class="fa fa-users"></i> <span>وكلاء مبيعات</span> <i class="fa fa-angle-right pull-right" style="text-align:center"></i>
+              </a>
+            </li>
+            <li ng-class={'active':$root.actives[4]}>
+              <a ng-click="$root.navigateState('promotionsa')">
+                <i class="fa fa-money"></i> <span>الترقيات</span> <i class="fa fa-angle-right pull-right" style="text-align:center"></i>
+              </a>
+            </li>
+                <li class="treeview">
+          <a>
+            <i class="fa fa-pie-chart"></i>
+            <span>أبلغ عن</span>
+            <span class="pull-left-container">
+              <!--<i class="fa fa-angle-left pull-left"></i>-->
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a ng-click="$root.navigateState('saleAgentsReportsa')" ng-class={'active':$root.actives[5]}><i class="fa fa-circle-o"></i> Sales Agents</a></li>
+            <li><a ng-click="$root.navigateState('companiesReportsa')"  ng-class={'active':$root.actives[6]}><i class="fa fa-circle-o"></i> Companies</a></li>
+          
+          </ul>
+        </li>
+          </ul>
+        </section>
+        <!-- /.sidebar -->
+      </aside>

@@ -1,0 +1,11 @@
+{
+  "name": "autotekux",
+  "version": "1.1.0",
+  "devDependencies": {
+    "lite-server": "^2.2.2"
+  },
+  "scripts": {
+    "lite": "lite-server",
+      "start": "node server.js"
+  }
+}

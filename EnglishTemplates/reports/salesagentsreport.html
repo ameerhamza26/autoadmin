@@ -1,0 +1,154 @@
+ <header-bar-supreme-english></header-bar-supreme-english>
+<left-side-bar-english></left-side-bar-english>
+ <div class="hold-transition skin-red sidebar-mini">
+    <div class="wrapper">   
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1>
+            Reports (Sales Agents)
+            <small>List, search, view, and manage sales agents</small>
+          </h1>
+          <!--<ol class="breadcrumb">
+            <li><a href="/index.html"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">Sales Agents</li>
+          </ol>-->
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="search-panel" class="box box-default box-solid">
+                        <div class="box-header with-border">
+                            <div class="pull-right box-tools">
+                                <button class="btn btn-box-tool refresh-btn" data-toggle="tooltip" title="Reload" ng-click="searchAgentByParamter(searchAgentName,searchAgentCompany,searchAgentNumber)"><i class="fa fa-refresh"></i></button>
+                                <button type="submit" class="btn btn-box-tool btn-sm" data-widget='collapse' data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
+                            </div><!-- /. tools -->
+                            <i class="fa fa-search"></i>
+                            <h3 class="box-title">Filter By Month</h3>
+                        </div><!-- /.box-header -->
+                        <div class="box-body" style="height:80px;overflow:hidden">
+                            <div class="form-group col-md-3">
+                                <label>Month</label>
+                                <select class="form-control" ng-model="filterMonth" ng-change="getMonth(filterMonth)">
+                                    <option>-- Please Select --</option>
+                                    <option value="1">January</option>
+                                    <option value="2">February</option>
+                                    <option value="3">March</option>
+                                    <option value="4">April</option>
+                                    <option value="5">May</option>
+                                    <option value="6">June</option>
+                                    <option value="7">July</option>
+                                    <option value="8">August</option>
+                                    <option value="9">September</option>
+                                    <option value="10">October</option>
+                                    <option value="11">November</option>
+                                    <option value="12">December</option>
+                                </select>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="box-footer">
+                            <div class="pull-left">
+                                <!--<a id="search-collapse" href="#">
+                                    <span id="more"><i class="fa fa-chevron-circle-down"></i> More search options</span>
+                                    <span id="less"><i class="fa fa-chevron-circle-up"></i> Less search options</span>
+                                </a>-->
+                            </div>
+                            <div class="pull-right">
+                                <input type="submit" class="btn btn-primary" style="width:100px" value="Filter" ng-click="filterByMonth()" />
+                                <!--<button id="resetButton" type="button" ng-click="fieldsReset()"  class="btn" style="width:100px;">Reset</button>-->
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div><!-- /.box -->
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="box box-primary">
+                        <div class="box-header">
+                            <div class="pull-right box-tools">
+                                <!--<button  class="btn btn-danger" ui-sref="addSalesAgent"><i class="fa fa-file-o"></i> Add New</button>-->
+                                <!--<button id="exportToExcel" name="exportToExcel" class="btn btn-primary"><i class="fa fa-file-excel-o"></i> Export To Excel</button>-->
+                                <button ng-click="downloadCSV({ filename: 'agents-data.csv' })" class="btn"><i class="fa fa-print"></i> Print</button>
+                            </div><!-- /. tools -->
+                            <i class="fa fa-users"></i>
+                            <h3 class="box-title">Sales Agents</h3>
+                        </div><!-- /.box-header -->
+
+                        <div class="box-body table-responsive">
+                            <div class="paging-panel">
+                                        Page                             
+                                        <button id="prev" type="submit" title="Previous Page" class="paging-button"><i class="fa fa-caret-left"></i></button>
+                                        <input type="text" class="form-control page-number" value="1"  ng-model="inc_dec" ng-change="pageChangeValue(inc_dec)" /> 
+                                        <button id="next" type="submit" title="Next Page" class="paging-button"><i class="fa fa-caret-right"></i></button>
+                                of <span class="number">{{totalpages}}</span> Pages |
+                                Show &nbsp;
+<!--                                 <select class="form-control psize">
+                                    <option value="20">20</option>
+                                    <option value="30" selected>30</option>
+                                    <option value="50">50</option>
+                                    <option value="100">100</option>
+                                    <option value="200">200</option>
+                                </select>  -->
+                                 <select class="form-control psize" style="width:80px;" ng-model="page_number" ng-change="pageChange(page_number)"  ng-options="limit.value as limit.text for limit in limits" ng-init="page_number='10'">
+                                
+                                </select>
+                            </div>
+                            <div class="clearfix"></div>
+
+
+                            <table id="search-results" class="table table-bordered table-hover dataTable click-rows">
+                                <thead>
+                                    <tr>
+                                        <th class="bg-gray-light sorting">ID</th>
+                                        <th class="bg-gray-light sorting_asc">Name</th>
+                                         <th class="bg-gray-light sorting_asc">Current Commission</th
+                                        <th class="bg-gray-light sorting_asc">Company Name</th>
+                                        <th class="bg-gray-light sorting">Email Adress</th>
+                                        <th class="bg-gray-light sorting">Mobile Number</th>
+                                        <th class="bg-gray-light sorting">Total Conveted</th>
+                                        <th class="bg-gray-light sorting">Totla Referrals</th>
+                                        <th class="bg-gray-light sorting">Totla Registered</th>
+                                        <th class="bg-gray-light sorting">Type</th>
+                                    </tr>
+                                </thead>
+                                
+                                <tbody>
+                                    <tr ng-if="!isDataLoading" ng-repeat="x in salesAgents" ng-click="getSingleSaleAgent(x.Id)">
+                                        <td>{{x.Id}}</td>
+                                        <td>{{x.FirstName +" " +x.LastName}}</td>
+                                        <td>{{x.CurrentCommission}}</td>
+                                        <td>{{x.CompanyName}}</td>
+                                        <td>{{x.EmailAddress}}</td>
+                                        <td>{{x.ContactNumber}}</td>
+                                        <td>{{x.TotalConverted}}</td>
+                                        <td>{{x.TotalReferrals}}</td>
+                                        <td>{{x.TotalRegistered}}</td>
+                                        <td>{{x.Type}}</td>
+                                    </tr>
+                               
+                                    
+                                    <!--<tr>
+                                        <td colspan="8" rowspan="2" style="text-align:center">No record found</td>
+                                    </tr>-->
+                            </table>
+                            <br/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </section><!-- /.content -->
+         <div ng-if="isDataLoading" style="width: 100px; margin: auto;">
+                                        <img src="assets/loader.gif" style="width: 100px; height: 100px;">
+                                    </div>
+      </div><!-- /.content-wrapper -->
+    </div><!-- ./wrapper -->
+
+  </div>
+  <footer-bar-english></footer-bar-english>

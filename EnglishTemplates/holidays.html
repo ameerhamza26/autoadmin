@@ -1,0 +1,95 @@
+<header-bar-supreme-english></header-bar-supreme-english>
+<left-side-bar-english></left-side-bar-english>
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Annual Holidays Setup
+            <small>Add mobile app user profile</small>
+          </h1>
+        <ol class="breadcrumb">
+            <li><a><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">Annual Hoildays</li>
+        </ol>
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <div class="box box-default">
+            <div class="box-body">
+                <div class="form-horizontal">
+                    <div class="row form-group">
+                        <label for="inputName" class="col-sm-2 control-label">Start Date</label>
+                        <div class="col-sm-4 input-group" style="padding:0px 15px">
+                            <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </div>
+                            <input type="text" ng-model="addPromotion.ExpiresOn" class="form-control datepicker" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask="" autocomplete="off">
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label for="inputName" class="col-sm-2 control-label">End Date</label>
+                        <div class="col-sm-4 input-group" style="padding:0px 15px">
+                            <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </div>
+                            <input type="text" ng-model="addPromotion.ExpiresOn" class="form-control datepicker" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask="" autocomplete="off">
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label for="inputName" class="col-sm-2 control-label">Title</label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" placeholder="title..." autocomplete="off">
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label class="col-sm-2 control-label"></label>
+                        <div class="col-sm-4">
+                            <div class="btn btn-primary" ng-class="{'spinner-wave' : loaderr == true}" ng-click="register()">
+                                <!-- ngIf: !loaderr --><span ng-if="!loaderr" class="ng-scope"> <i class="fa fa-save"></i> Save</span>
+                                <!-- end ngIf: !loaderr -->
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <table class="table table-bordered table-hover dataTable">
+                        <thead>
+                            <tr>
+                                <th class="bg-gray-light sorting">Title</th>
+                                <th class="bg-gray-light sorting">Start Date</th>
+                                <th class="bg-gray-light sorting">End Date</th>
+                                <th class="bg-gray-light sorting"></th>
+                                <th class="bg-gray-light sorting"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Eid Holidays</td>
+                                <td>23/06/2017</td>
+                                <td>30/06/2017</td>
+                                <td><a href="#">Delete</a></td>
+                                <td><a href="#">Update</a></td>
+                            </tr>
+                            <tr>
+                                <td>National Holidays</td>
+                                <td>23/06/2017</td>
+                                <td>30/06/2017</td>
+                                <td><a href="#">Delete</a></td>
+                                <td><a href="#">Update</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+<footer-bar-english></footer-bar-english>

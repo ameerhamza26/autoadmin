@@ -1,0 +1,177 @@
+<header-bar-supreme-english></header-bar-supreme-english>
+<left-side-bar-english></left-side-bar-english>
+  <div class="hold-transition skin-red sidebar-mini">
+    <div class="wrapper">
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1>
+            Promotions
+            <small>List, search, view, and manage partner Promotions</small>
+          </h1>
+          <ol class="breadcrumb">
+            <li><a><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">Promotions</li>
+          </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="search-panel" class="box box-default box-solid">
+                        <div class="box-header with-border">
+                            <div class="pull-right box-tools">
+                                <button class="btn btn-box-tool refresh-btn" data-toggle="tooltip" title="Reload" ng-click="searchPromotionByParameter(searchTitle_EN,searchTitle_AR,searchTrigger,searchStatus)"><i class="fa fa-refresh"></i></button>
+                                <button type="submit" class="btn btn-box-tool btn-sm" data-widget='collapse' data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
+                            </div><!-- /. tools -->
+                            <i class="fa fa-search"></i>
+                            <h3 class="box-title">Search</h3>
+                        </div><!-- /.box-header -->
+                        <div class="box-body" style="height:80px;overflow:hidden">
+                            <div class="form-group col-md-3">
+                                <label>Offer Title (English)</label>
+                                <input type="text" ng-model="searchTitle_EN" class="form-control" placeholder="Name" maxlength="32" />
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label>Offer Title (عربي)</label>
+                                <input type="text" ng-model="searchTitle_AR" class="form-control" placeholder="Name" maxlength="32" />
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label>Offer Trigger</label>
+                                <select class="form-control"  ng-model="triggerId" ng-change="getId(triggerId)"  ng-options="triggers.TriggerText for triggers in allTriggers">      
+                                </select>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label>Status</label>
+                                <select class="form-control" ng-model="searchStatus">
+                                    <option>-- Please Select --</option>
+                                    <option>Active</option>
+                                    <option>Inactive</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label>Created On (From)</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                    <input type="text" class="form-control datepicker" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask="">
+                                </div>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label>Created On (To)</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                    <input type="text" class="form-control datepicker" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask="">
+                                </div>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label>Expires On (From)</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                    <input type="text" class="form-control datepicker" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask="">
+                                </div>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label>Expires On (To)</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                    <input type="text" class="form-control datepicker" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask="">
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="box-footer">
+                            <!--<div class="pull-left">
+                                <a id="search-collapse" href="#">
+                                    <span id="more"><i class="fa fa-chevron-circle-down"></i> More search options</span>
+                                    <span id="less"><i class="fa fa-chevron-circle-up"></i> Less search options</span>
+                                </a>
+                            </div>-->
+                            <div class="pull-right">
+                                <input type="submit" class="btn btn-primary" style="width:100px" value="Search"  ng-click="searchPromotionByParameter(searchTitle_EN,searchTitle_AR,searchTrigger,searchStatus)"/>
+                                <button id="resetButton" type="button" ng-click="fieldsReset()" class="btn" style="width:100px;">Reset</button>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div><!-- /.box -->
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="box box-primary">
+                        <div class="box-header">
+                            <div class="pull-right box-tools">
+                                <button  class="btn btn-danger" ui-sref="addPromotion"><i class="fa fa-file-o"></i> Add New</button>
+                                <!--<button id="exportToExcel" name="exportToExcel" class="btn btn-primary"><i class="fa fa-file-excel-o"></i> Export To Excel</button>
+                                <button class="btn"><i class="fa fa-print"></i> Print</button>-->
+                            </div><!-- /. tools -->
+                            <i class="fa fa-money"></i>
+                            <h3 class="box-title">Promotions</h3>
+                        </div><!-- /.box-header -->
+
+                        <div class="box-body table-responsive">
+                            <div class="paging-panel">
+                                        Page                             
+                                        <button id="prev" type="submit" title="Previous Page" class="paging-button" ng-click="dec_value(inc_dec)"><i class="fa fa-caret-left"></i></button>
+                                        <input type="text" class="form-control page-number" value="1" ng-model="inc_dec" ng-change="pageChangeValue(inc_dec)"/> 
+                                        <button id="next" type="submit" title="Next Page" class="paging-button" ng-click="inc_value(inc_dec)"><i class="fa fa-caret-right"></i></button>
+                        
+                                Show &nbsp;
+                                <select class="form-control psize" style="width:80px;" ng-model="page_number" ng-change="pageChange(page_number)"  ng-options="limit.value as limit.text for limit in limits" ng-init="page_number='10'">
+                                
+                                </select>                           
+                            </div>
+                            <div class="clearfix"></div>
+
+
+                            <table id="search-results" class="table table-bordered table-hover dataTable click-rows">
+                                <thead>
+                                    <tr>
+                                        <th class="bg-gray-light sorting">ID</th>
+                                        <th class="bg-gray-light sorting">Title (English)</th>
+                                        <th class="bg-gray-light sorting">Title (عربي)</th>
+                                        <th class="bg-gray-light sorting">Trigger</th>
+                                        <th class="bg-gray-light sorting_desc">Created On</th>
+                                        <th class="bg-gray-light sorting">Expires On</th>
+                                        <th class="bg-gray-light sorting">Status</th>
+                                    </tr>
+                                </thead>
+                                   
+                                <tbody>
+                                    <tr ng-if="!isDataLoading" ng-repeat="x in promotions" ng-click="getSinglePromotion(x.Id)">
+                                        <td>{{x.Id}}</td>
+                                        <td>{{x.Title_EN}}</td>
+                                        <td>{{x.Title_AR}}</td>
+                                        <td>{{x.Trigger}}</td>
+                                        <td>{{x.CreatedOn}}</td>
+                                        <td>{{x.ExpiresOn}}</td>
+                                        <td class="text-green"><i class="fa fa-circle"></i> {{x.Status}}</td>
+                                    </tr>             
+                                    <!--<tr>
+                                        <td colspan="8" rowspan="2" style="text-align:center">No record found</td>
+                                    </tr>-->
+                            </table>
+                            <br/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </section><!-- /.content -->
+           <div ng-if="isDataLoading" style="width: 100px; margin: auto;">
+                 <img src="assets/loader.gif" style="width: 100px; height: 100px;">
+            </div>
+      </div><!-- /.content-wrapper -->
+    </div><!-- ./wrapper -->
+</div>
+<footer-bar-english></footer-bar-english>

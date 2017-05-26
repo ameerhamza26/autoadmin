@@ -1,0 +1,80 @@
+ <aside class="main-sidebar">
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar">
+          <!-- Sidebar user panel -->
+          <div class="user-panel">
+            <div class="pull-left image">
+              <img src="/dist/img/avatar-blank.jpg" class="img-circle" alt="User Image">
+            </div>
+            <div class="pull-left info">
+              <p>Administrator</p>
+              <i class="fa fa-circle text-success"></i> Online
+            </div>
+          </div>
+          
+          <!-- sidebar menu: : style can be found in sidebar.less -->
+          <ul class="sidebar-menu">
+            <li class="header">MAIN NAVIGATION</li>
+            <li ng-class={'active':$root.actives[0]}>
+              <a ng-click="$root.navigateState('dashboard')">
+                <i class="fa fa-dashboard"></i> <span>Dashboard</span> <i class="fa fa-angle-right pull-right" style="text-align:center"></i>
+              </a>
+            </li>
+            <li ng-class={'active':$root.actives[1]}>
+              <a ng-click="$root.navigateState('mobileappusers')">
+                <i class="fa fa-mobile"></i> <span>Mobile App Users</span> <i class="fa fa-angle-right pull-right" style="text-align:center"></i>
+              </a>
+            </li>
+            <li ng-class={'active':$root.actives[2]}>
+              <a ng-click="$root.navigateState('companies')">
+                <i class="fa fa-building"></i> <span>Companies</span> <i class="fa fa-angle-right pull-right" style="text-align:center"></i>
+              </a>
+            </li>
+            <li ng-class={'active':$root.actives[3]}>
+              <a ng-click="$root.navigateState('salesagents')">
+                <i class="fa fa-users"></i> <span>Sales Agents</span> <i class="fa fa-angle-right pull-right" style="text-align:center"></i>
+              </a>
+            </li>
+            <li ng-class={'active':$root.actives[4]}>
+              <a ng-click="$root.navigateState('promotions')">
+                <i class="fa fa-money"></i> <span>Promotions</span> <i class="fa fa-angle-right pull-right" style="text-align:center"></i>
+              </a>
+            </li>
+            <li ng-class={'active':$root.actives[4]}>
+              <a ng-click="$root.navigateState('holidays')">
+                <i class="fa fa-money"></i> <span>Annual Holidays</span> <i class="fa fa-angle-right pull-right" style="text-align:center"></i>
+              </a>
+            </li>
+            <li ng-class={'active':$root.actives[4]}>
+              <a ng-click="$root.navigateState('branchsetup')">
+                <i class="fa fa-money"></i> <span>Branch Setup</span> <i class="fa fa-angle-right pull-right" style="text-align:center"></i>
+              </a>
+            </li>
+            <li ng-class={'active':$root.actives[4]}>
+              <a ng-click="$root.navigateState('servicesetup')">
+                <i class="fa fa-money"></i> <span>Service Setup</span> <i class="fa fa-angle-right pull-right" style="text-align:center"></i>
+              </a>
+            </li>
+            <!--<li>
+              <a href="/pages/reports/index.html">
+                <i class="fa fa-book"></i> <span>Reports</span> <i class="fa fa-angle-right pull-right" style="text-align:center"></i>
+              </a>
+            </li>-->
+             <li class="treeview">
+          <a>
+            <i class="fa fa-pie-chart"></i>
+            <span>Report</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu menu-open" style="display: block;">
+            <li ng-class={'active':$root.actives[5]}><a ng-click="$root.navigateState('saleAgentsReports')" ><i class="fa fa-circle-o"></i> Sales Agents</a></li>
+            <li ng-class={'active':$root.actives[6]}><a ng-click="$root.navigateState('companiesReports')" ><i class="fa fa-circle-o"></i> Companies</a></li>
+          
+          </ul>
+        </li>
+          </ul>
+        </section>
+        <!-- /.sidebar -->
+      </aside>

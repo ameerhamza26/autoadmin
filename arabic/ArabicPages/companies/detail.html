@@ -1,0 +1,144 @@
+ 
+<header-bar-supreme-arabic></header-bar-supreme-arabic>
+<left-side-bar-arabic></left-side-bar-arabic>
+
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper" dir="ltr">
+        <!-- Content Header (Page header) -->
+        <section class="content-header" dir="rtl">
+          <h1>
+           شركة 
+            <small>شريك معلومات الشركات</small>
+          </h1>
+     
+        </section>
+
+        <!-- Main content -->
+           <section class="content">
+            
+            <div class="box box-default">
+                <div class="box-header" *ngIf="useRouteParams === true">
+                    <h3 class="box-title">Partner Company</h3>
+                    <div class="box-tools pull-right">
+                        <button *ngIf="approverData" class="btn btn-primary" ng-click="navigateToUpdate(SingleCompany.Id)"><i class="fa fa-edit"></i>تعديل</button>
+                        <div class="btn btn-primary" ng-class="{'spinner-wave' : loaderr == true}" ng-click="deleteCompany(SingleCompany.Id)" ><span ng-if="!loaderr"> <i class="fa fa-trash"></i> حذف</span>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            </div>
+                        <!--<button class="btn" onclick="window.print()"><i class="fa fa-print"></i> طباعة</button>-->
+                        <button class="btn" ui-sref="companiesa"><i class="fa fa-close"></i> أغلق</button>
+                    </div>
+                </div>
+                <div class="box-body">
+                       <div class="alert alert-success" ng-show="showSuccessAlert">
+                          <button type="button" class="close" data-ng-click="switchBool('showSuccessAlert')">×</button>
+                          <strong>Company Deleted Sucessfully</strong> 
+                    </div>
+                     <div class="alert alert-danger" ng-show="showErrorAlert">
+                          <button type="button" class="close" data-ng-click="switchBool('showErrorAlert')">×</button>
+                          <strong>{{errorText}}</strong> 
+                    </div>
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#detail-form-tab" data-toggle="tab">Detail</a></li>
+                        <!--<li><a href="#commission-tab" data-toggle="tab">Commission History</a></li>-->
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="detail-form-tab">
+                            <div class="row">
+                                 <div ng-if="isDataLoading" style="width: 100px; margin: auto;">
+                                        <img src="../assets/loader.gif" style="width: 100px; height: 100px;">
+                                    </div>
+                                <div class="col-md-12">
+                                    <h3>Company Information</h3>
+                                </div>
+                            </div>
+                            <div class="row description-view">
+                                <div class="col-md-6">
+                                    <dl ng-if="!isDataLoading" class="dl-horizontal">
+                                        <dt>Name (En)</dt>
+                                        <dd>{{SingleCompany.CompanyName}}</dd>
+                                        <dt>Name (Ar)</dt>
+                                        <dd>{{SingleCompany.CompanyName}}</dd>
+                                        <dt>Phone</dt>
+                                        <dd>012 234 8372</dd>
+                                        <dt>Address</dt>
+                                        <dd>{{SingleCompany.Address}}</dd>
+                                        <dt>Status</dt>
+                                        <dd class="text-green"><i class="fa fa-circle"></i>{{SingleCompany.AccountStatus}}</dd>
+                                        <dt>Primary Contact</dt>
+                                        <dd>{{SingleCompany.ContactPerson}}</dd>
+                                        <dt>Primary Phone</dt>
+                                        <dd>{{SingleCompany.ContactPhone}}</dd>
+                                        <dt>Primary Email</dt>
+                                        <dd>{{SingleCompany.ContactEmail}}</dd>
+                                        <dt>Secondary Contact</dt>
+                                        <dd>{{SingleCompany.ContactPerson1}}</dd>
+                                        <dt>Secondary Phone</dt>
+                                        <dd>{{SingleCompany.ContactPhone1}}</dd>
+                                        <dt>Secondary Email</dt>
+                                        <dd>{{SingleCompany.ContactEmail1}}</dd>
+                                        <dt>other contact</dt>
+                                        <dd>{{SingleCompany.OtherContact}}</dd>
+                                        <dt>Bank Account</dt>
+                                        <dd>{{SingleCompany.BankAccountDetails}}  </dd>
+                                        <dt>{{SingleCompany.BankAccountDetails}}</dt>
+                                        <dd></dd>
+                                    </dl>
+                                </div>
+                                <div class="col-md-6">
+                                    <dl class="dl-horizontal">
+                                        <dt>Total Referrals</dt>
+                                        <dd>{{SingleCompany.TotalRerrals}}</dd>
+                                        <dt>Total Registered</dt>
+                                        <dd>{{SingleCompany.TotalRegistered}}</dd>
+                                        <dt>Total Converted</dt>
+                                        <dd>{{SingleCompany.TotalConverted}}</dd>
+                                        <dt>Sales Agents</dt>
+                                        <dd>{{SingleCompany.TotalSalesAgents}}</dd>
+                                        <dt>Registered On</dt>
+                                        <dd>May 3, 2016 10:16:12 AM</dd>
+                                    </dl>
+                                    <hr/>
+                                    <dl class="dl-horizontal">
+                                        <dt>Company's Commission</dt>
+                                        <dd>{{SingleCompany.CompanyCommission}}</dd>
+                                        <dt>Agent's Commission</dt>
+                                        <dd>{{SingleCompany.AgentsCommision}}</dd>
+                                    </dl>
+                                </div>
+                            </div>
+                            <hr/>
+                            
+                        </div>
+                        
+                       
+                        </div>-->
+                    </div>
+                    <br/>
+                </div>
+            </div>
+            
+        </section><!-- /.content -->
+      </div><!-- /.content-wrapper -->
+     
+    
+    <script type="text/javascript">
+        $("[data-mask]").inputmask();
+        $('.datepicker').datepicker({
+            autoclose: true,
+            format: 'dd/mm/yyyy'
+        });
+        
+        // $('a#reset-password').click(function(e) {
+        //     e.preventDefault();
+            
+        //     if (confirm("Are you sure you want to reset this user's password?"))
+        //     {
+        //         alert("Password reset and sent as text to user's mobile number successfuly.")
+        //     }
+        // })
+    </script>
+
