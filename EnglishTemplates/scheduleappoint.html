@@ -1,0 +1,74 @@
+<header-bar-supreme-english></header-bar-supreme-english>
+<left-side-bar-english></left-side-bar-english>
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Schedule Appointment
+            <!-- <small>Add mobile app user profile</small> -->
+          </h1>
+        <ol class="breadcrumb">
+            <li><a><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">Schedule Appointment</li>
+        </ol>
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <div class="box box-default">
+            <div class="box-body">
+                <div class="form-horizontal">
+                    <div class="row form-group">
+                        <div class="col-md-6">
+                            <label for="inputName" class="col-md-4 control-label">Search Customer</label>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" placeholder="Search Customer" autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputName" class="col-md-4 control-label">Branch</label>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" placeholder="Branch" autocomplete="off">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-6">
+                            <label for="inputName" class="col-md-4 control-label">Service</label>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" placeholder="Service" autocomplete="off">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label for="inputName" class="col-md-2 control-label">Select Date</label>
+                        <div class="col-md-10">
+                            <div ui-calendar="uiConfig.calendar" class="span8 calendar" ng-model="eventSources"></div> 
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label for="inputName" class="col-md-2 control-label">Select Time</label>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" placeholder="Select Time" autocomplete="off">
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label class="col-sm-2 control-label"></label>
+                        <div class="col-sm-4">
+                            <div class="btn btn-primary" ng-class="{'spinner-wave' : loaderr == true}" ng-click="register()"><span ng-if="!loaderr">Schedule</span>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+<footer-bar-english></footer-bar-english>

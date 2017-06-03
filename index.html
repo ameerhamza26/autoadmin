@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html ng-app="Autotek">
-  
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Autotek Mobile Backend</title>
@@ -30,17 +30,28 @@
     <link rel="stylesheet" href="/plugins/daterangepicker/daterangepicker-bs3.css">
     <!-- bootstrap wysihtml5 - text editor -->
     <link rel="stylesheet" href="/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
-    
-    <link rel="stylesheet" href="/dist/css/styles.css">
-	
-    	  <!-- Angularjs -->
-	  <script type="text/javascript" src="assets/angular.min.js"></script>
-	
+    <link rel="stylesheet" type="text/css" href="dist/css/fullcalendar.css">
+    <link rel="stylesheet" type="text/css" href="/dist/css/styles.css">
+    <!-- Angularjs -->
+    <script type="text/javascript" src="assets/angular.min.js"></script>
+    <!-- jQuery 2.1.4 -->
+    <script src="/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <!-- jQuery UI 1.11.4 -->
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <script>
+    //   $.widget.bridge('uibutton', $.ui.button);
+    </script>
+    <!-- Bootstrap 3.3.5 -->
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <!-- Morris.js charts -->
     <!-- Required NPMs -->
-	  <script type="text/javascript" src="assets/angular-local-storage/dist/angular-local-storage.min.js"></script>
-  	<script type="text/javascript" src="assets/angular-ui-router/release/angular-ui-router.min.js"></script>
-
-	  <script src="js/app.js"></script>
+    <script type="text/javascript" src="assets/angular-local-storage/dist/angular-local-storage.min.js"></script>
+    <script type="text/javascript" src="assets/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.13.0.js"></script>
+    <script type="text/javascript" src="js/moment.min.js"></script>
+    <script type="text/javascript" src="js/fullcalendar.js"></script>
+    <script type="text/javascript" src="js/gcal.js"></script>
+    <script src="js/app.js"></script>
     <script src="js/controller.js"></script>
     <script src="js/services.js"></script>
     <script src="js/appUsers.js"></script>
@@ -48,32 +59,20 @@
     <script src="js/salesAgentsCtrl.js"></script>
     <script src="js/promotionsCtrl.js"></script>
     <script type="text/javascript" src="js/directive.js"></script>
-	
-	
+    <script type="text/javascript" src="js/calendar.js"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-  </head>
-  <body class="hold-transition skin-red sidebar-mini" style="background-color:#d2d6de">
-      <!-- Append Dynamic Content Here-->
-      <div ui-view></div>
+</head>
 
-    </div><!-- ./wrapper -->
-
-        <!-- jQuery 2.1.4 -->
-
-    <script src="/plugins/jQuery/jQuery-2.1.4.min.js"></script>
-    <!-- jQuery UI 1.11.4 -->
-    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-     <script>
-    //   $.widget.bridge('uibutton', $.ui.button);
-    </script>
-    <!-- Bootstrap 3.3.5 -->
-    <script src="/bootstrap/js/bootstrap.min.js"></script>
-    <!-- Morris.js charts -->
+<body class="hold-transition skin-red sidebar-mini" style="background-color:#d2d6de">
+    <!-- Append Dynamic Content Here-->
+    <div ui-view></div>
+    </div>
+    <!-- ./wrapper -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
     <script src="/plugins/morris/morris.min.js"></script>
     <!-- Sparkline -->
@@ -100,9 +99,9 @@
     <script src="/dist/js/pages/dashboard.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="/dist/js/demo.js"></script>
-    
     <!-- iCheck -->
     <script src="plugins/iCheck/icheck.min.js"></script>
-        <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-  </body>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+</body>
+
 </html>

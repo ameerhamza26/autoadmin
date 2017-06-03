@@ -1,6 +1,6 @@
 //app.js
 
-angular.module('Autotek', ['ui.router', 'Autotek.controller', 'CoreApi', 'LocalStorageModule', 'Autotek.directive'])
+angular.module('Autotek', ['ui.router', 'Autotek.controller', 'CoreApi', 'LocalStorageModule', 'Autotek.directive', 'ui.calendar', 'ui.bootstrap'])
     .config(function($stateProvider, $urlRouterProvider,localStorageServiceProvider) {
 
         $urlRouterProvider.otherwise('login');
@@ -78,6 +78,27 @@ angular.module('Autotek', ['ui.router', 'Autotek.controller', 'CoreApi', 'LocalS
             // }
         })
 
+        .state('appointcalender', {
+            url: "/appointcalender",
+            templateUrl: "/EnglishTemplates/appointcalender.html",
+            //controller:"BranchSetupCtrl"
+            // resolve: {
+            //     loginRequired: function(User) {
+            //         return User.loginRequired();
+            //     }
+            // }
+        })
+
+        .state('scheduleappoint', {
+            url: "/scheduleappoint",
+            templateUrl: "/EnglishTemplates/scheduleappoint.html",
+            //controller:"BranchSetupCtrl"
+            // resolve: {
+            //     loginRequired: function(User) {
+            //         return User.loginRequired();
+            //     }
+            // }
+        })
         .state('servicesetup', {
             url: "/servicesetup",
             templateUrl: "/EnglishTemplates/servicesetup.html",
@@ -245,7 +266,7 @@ angular.module('Autotek', ['ui.router', 'Autotek.controller', 'CoreApi', 'LocalS
 
 .run(function($rootScope, $state, $location){
      
-   $rootScope.actives = [true, false,false,false,false,false];
+   $rootScope.actives = [true, false,false,false,false,false, false, false, false, false, false, false];
    $rootScope.navigateState = function(state) {
        $state.go(state)
 
