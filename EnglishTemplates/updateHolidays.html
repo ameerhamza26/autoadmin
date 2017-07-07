@@ -1,0 +1,65 @@
+<header-bar-supreme-english></header-bar-supreme-english>
+<left-side-bar-english></left-side-bar-english>
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Annual Holidays Setup
+            <small>Add mobile app user profile</small>
+          </h1>
+        <ol class="breadcrumb">
+            <li><a><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">Annual Hoildays</li>
+        </ol>
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <div class="box box-default">
+            <div class="box-body">
+                <div class="alert alert-success" ng-show="showSuccessAlert">
+                          <button type="button" class="close" data-ng-click="switchBool('showSuccessAlert')">×</button>
+                          <strong>Holiday added successfuly</strong> 
+                    </div>
+                <div class="form-horizontal">
+                    <div class="row form-group">
+                        <label for="inputName" class="col-sm-2 control-label">Start Date</label>
+                        <div class="col-sm-4 input-group" style="padding:0px 15px">
+                            <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </div>
+                            <input type="text" ng-bind="testDate" class="form-control datepicker" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask="" autocomplete="off" ng-value="x.StartDate">
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label for="inputName" class="col-sm-2 control-label">End Date</label>
+                        <div class="col-sm-4 input-group" style="padding:0px 15px">
+                            <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </div>
+                            <input type="text" ng-model="endDate" class="form-control datepicker" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask="" autocomplete="off">
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label for="inputName" class="col-sm-2 control-label">Title</label>
+                        <div class="col-sm-4">
+                            <input type="text" ng-model="title" class="form-control" placeholder="title..." autocomplete="off">
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label class="col-sm-2 control-label"></label>
+                        <div class="col-sm-4">
+                            <div class="btn btn-primary" ng-click="updateHoliday()" ><span ng-if="!loaderr"> <i class="fa fa-save"></i> Update </span></div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                   
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+<footer-bar-english></footer-bar-english>

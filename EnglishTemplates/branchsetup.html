@@ -17,6 +17,10 @@
     <section class="content">
         <div class="box box-default">
             <div class="box-body">
+                <div class="alert alert-success" ng-show="showSuccessAlert">
+                          <button type="button" class="close" data-ng-click="switchBool('showSuccessAlert')">×</button>
+                          <strong>Branch added Sucessfully</strong> 
+                    </div>
                 <ul class="nav nav-tabs">
                     <li ng-class={'active':tabs[0]}><a ng-click="tabclick(0)" data-toggle="tab">Main info</a></li>
                     <li ng-class={'active':tabs[1]}><a ng-click="tabclick(1)" data-toggle="tab">Available Services</a></li>
@@ -29,48 +33,44 @@
                             <div class="row form-group">
                                 <label for="inputName" class="col-sm-2 control-label">Name (English)</label>
                                 <div class="col-sm-4">
-                                    <input type="text" class="form-control" placeholder="Name (English)" autocomplete="off">
+                                    <input type="text" ng-model="branchNameEn" class="form-control" placeholder="Name (English)" autocomplete="off">
                                 </div>
                             </div>
                             <div class="row form-group">
                                 <label for="inputName" class="col-sm-2 control-label">Name (Arabic)</label>
                                 <div class="col-sm-4">
-                                    <input type="text" class="form-control" placeholder="Name (Arabic)" autocomplete="off">
+                                    <input type="text" ng-model="brancNameAr" class="form-control" placeholder="Name (Arabic)" autocomplete="off">
                                 </div>
                             </div>
                             <div class="row form-group">
                                 <label for="inputName" class="col-sm-2 control-label">Address</label>
                                 <div class="col-sm-4">
-                                    <textarea rows="4" class="form-control" placeholder="Address" autocomplete="off"></textarea>
+                                    <textarea rows="4" class="form-control" ng-model="branchAddress" placeholder="Address" autocomplete="off"></textarea>
                                 </div>
                             </div>
                             <div class="row form-group">
                                 <label for="inputName" class="col-sm-2 control-label">GPS (Longitude)</label>
                                 <div class="col-sm-4">
-                                    <input type="text" class="form-control" placeholder="GPS (Longitude)" autocomplete="off">
+                                    <input type="text" class="form-control" ng-model="longitude" placeholder="GPS (Longitude)" autocomplete="off">
                                 </div>
                             </div>
                             <div class="row form-group">
                                 <label for="inputName" class="col-sm-2 control-label">GPS (Latitude)</label>
                                 <div class="col-sm-4">
-                                    <input type="text" class="form-control" placeholder="GPS (Latitude)" autocomplete="off">
+                                    <input type="text" class="form-control" ng-model="latitude" placeholder="GPS (Latitude)" autocomplete="off">
                                 </div>
                             </div>
                             <div class="row form-group">
                                 <label for="inputName" class="col-sm-2 control-label">City</label>
                                 <div class="col-sm-4">
-                                    <select class="form-control">
-                                        <option value="? undefined:undefined ?"></option>
-                                        <option value="Active">Karachi</option>
-                                        <option value="Inactive">Lahore</option>
-                                        <option value="Inactive">Islamabad</option>
+                                    <select class="form-control" ng-model="cityId" ng-change="getId(cityId)"  ng-options="Cities.CityName for Cities in allCities"> 
                                     </select>
                                 </div>
                             </div>
                             <div class="row form-group">
                                 <label class="col-sm-2 control-label"></label>
                                 <div class="col-sm-4">
-                                    <div class="btn btn-primary" ng-class="{'spinner-wave' : loaderr == true}" ng-click="register()">
+                                    <div class="btn btn-primary" ng-class="{'spinner-wave' : loaderr == true}" ng-click="addBranch()">
                                         <!-- ngIf: !loaderr --><span ng-if="!loaderr" class="ng-scope"> <i class="fa fa-save"></i> Save</span>
                                         <!-- end ngIf: !loaderr -->
                                         <div></div>

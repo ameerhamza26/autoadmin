@@ -138,6 +138,16 @@ angular.module('CoreApi', ['CoreApiUtilities'])
         var url = httpService.Utils.buildUrl(new Array('api', 'salesagents',Id));
         return httpService.$http.delete(url, config);
     }
+    this.deleteHoliday = function(Id) {
+        var config = httpService.Utils.getHeader();
+        var url = httpService.Utils.buildUrl(new Array('api', 'annualholiday', Id));
+        return httpService.$http.delete(url, config);
+    }
+    this.deleteService= function(Id) {
+        var config = httpService.Utils.getHeader();
+        var url = httpService.Utils.buildUrl(new Array('api', 'service', Id));
+        return httpService.$http.delete(url, config);
+    }
       this.deletePromotion = function(Id) {
         var config = httpService.Utils.getHeader();
         var url = httpService.Utils.buildUrl(new Array('api', 'discountoffers',Id));
@@ -147,6 +157,16 @@ angular.module('CoreApi', ['CoreApiUtilities'])
         var config = httpService.Utils.getHeader();
         var url = httpService.Utils.buildUrl(new Array('api', 'customers'));
         return httpService.$http.put(url,user,config);
+    }
+    this.UpdateHoliday = function(Holiday) {
+        var config = httpService.Utils.getHeader();
+        var url = httpService.Utils.buildUrl(new Array('api', 'annualholiday'));
+        return httpService.$http.put(url, Holiday, config);
+    }
+    this.UpdateService= function(Holiday) {
+        var config = httpService.Utils.getHeader();
+        var url = httpService.Utils.buildUrl(new Array('api', 'service'));
+        return httpService.$http.put(url, Holiday, config);
     }
       this.changePassword = function(passwordchange) {
         // var params = httpService.Utils.getStringParams(param);
@@ -162,6 +182,16 @@ angular.module('CoreApi', ['CoreApiUtilities'])
     this.getReport1 = function(month) {
         var config = httpService.Utils.getHeader();
         var url = httpService.Utils.buildUrl(new Array('api', 'customerorders','report','monthlycommission',month));
+        return httpService.$http.get(url, config);
+    }
+    this.getHolidays = function(pageNumber, pageSize) {
+        var config = httpService.Utils.getHeader();
+        var url = httpService.Utils.buildUrl(new Array('api', 'annualholiday', pageNumber, pageSize));
+        return httpService.$http.get(url, config);
+    }
+    this.getServices = function(pageNumber, pageSize) {
+        var config = httpService.Utils.getHeader();
+        var url = httpService.Utils.buildUrl(new Array('api', 'service', pageNumber, pageSize));
         return httpService.$http.get(url, config);
     }
       this.UpdateCompany = function(company) {

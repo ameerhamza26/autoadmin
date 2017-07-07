@@ -1,17 +1,17 @@
-<header-bar-supreme-english></header-bar-supreme-english>
-<left-side-bar-english></left-side-bar-english>
+<header-bar-supreme-arabic></header-bar-supreme-arabic>
+<left-side-bar-arabic></left-side-bar-arabic>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Annual Holidays Setup
-            <small>Add mobile app user profile</small>
+            العطل السنوية
+            <!--<small style="float: left">Add mobile app user profile</small>-->
           </h1>
-        <ol class="breadcrumb">
+        <!--<ol class="breadcrumb" style="float: left">
             <li><a><i class="fa fa-dashboard"></i> Home</a></li>
             <li class="active">Annual Hoildays</li>
-        </ol>
+        </ol>-->
     </section>
     <!-- Main content -->
     <section class="content">
@@ -32,7 +32,7 @@
                             <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </div>
-                            <input type="date" ng-model="startdate" value="{{startdate}}"  class="form-control datepicker"  autocomplete="off">
+                            <input type="text" ng-model="startdate" ng-value="startdate" class="form-control datepicker" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask="" autocomplete="off">
                         </div>
                     </div>
                     <div class="row form-group">
@@ -41,7 +41,7 @@
                             <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </div>
-                            <input type="date" ng-model="enddate" value={{enddate}} class="form-control datepicker"  autocomplete="off">
+                            <input type="text" ng-model="enddate" ng-value="enddate" class="form-control datepicker" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask="" autocomplete="off">
                         </div>
                     </div>
                     <div class="row form-group">
@@ -71,16 +71,16 @@
                                 <th class="bg-gray-light sorting">Title</th>
                                 <th class="bg-gray-light sorting">Start Date</th>
                                 <th class="bg-gray-light sorting">End Date</th>
-                                <th class="bg-gray-light sorting">Update Action</th>
-                                <th class="bg-gray-light sorting">Delete Action</th>
+                                <th class="bg-gray-light sorting"></th>
+                                <th class="bg-gray-light sorting"></th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr ng-repeat="x in allHolidays" ng-if="!isDataLoading">
                                 <td>{{x.Title}}</td>
-                                <td>{{x.StartDate | date:'MM/dd/yyyy'}}</td>
-                                <td>{{x.EndDate | date:'MM/dd/yyyy'}}</td>
-                                <td><div class="btn btn-primary"  ng-click="navigateToUpdateHoliday(x)"> Update</div></td>
+                                <td>{{x.StartDate}}</td>
+                                <td>{{x.EndDate}}</td>
+                                <td><div class="btn btn-primary"  ng-click="navigateToUpdateHoliday()"> Update</div></td>
                                  <td><div class="btn btn-primary" ng-click="deleteHoliday(x.Id)" ><i class="fa fa-trash"></i> Delete</div>
                             </tr>
                         </tbody>
@@ -95,4 +95,4 @@
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
-<footer-bar-english></footer-bar-english>
+<footer-bar-arabic></footer-bar-arabic>

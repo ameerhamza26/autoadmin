@@ -6,6 +6,10 @@
   },
   "scripts": {
     "lite": "lite-server",
-      "start": "node server.js"
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "angular-datepicker": "^1.0.5",
+    "angular-strap": "^2.3.12"
   }
 }

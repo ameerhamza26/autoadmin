@@ -124,7 +124,125 @@ app.controller('DashboardApiCtrl', function($scope, User) {
             console.log('The error', err);
         })
 })
+app.controller('annualHolidayConrtoller',function($scope, User, $http,$state,$rootScope){
+        $scope.startDate="";
+        $scope.endDate="";
+        $scope.title="";
+        $scope.isDataLoading = true;
+        $scope.allHolidays=[];
+        $scope.testDate="";
+        $scope.startdate="";
+        $scope.enddate="";
+        $scope.ttl="";
+        $scope.id="";
+        $scope.newObject = {};
+        $scope.showgrid=true;
+        $scope.updateBtnShow=false;
+        $scope.saveBtnShow=true;
+        $scope.addAnnualHolday= function(){
+             
+              $scope.switchBool = function(value) {
+                    $scope[value] = !$scope[value];
+                };
+                $scope.loaderr = true;
+                $scope.showSuccessAlert = false;
+                $scope.showSuccessAlertDelete = false;
+                $scope.showErrorAlert = false;
+                $scope.errorText = "";
 
+
+            var params = "grant_type=client_credentials&client_id=Android01&client_secret=21B5F798-BE55-42BC-8AA8-0025B903DC3B&scope=app1";
+            $scope.holdayObject={
+                "StartDate" :$scope.startdate,
+                "EndDate":$scope.enddate,
+                "Title" : $scope.ttl
+            } 
+            console.log('holiday object',$scope.holdayObject)
+                // $scope.user.UserName = $scope.user.MobileNumber;
+                var url = "http://autotecauth.azurewebsites.net/identity/connect/token";
+                $http.post(url, params,{ 
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
+                }).success(function(result){
+                    $http.post('http://autotecapi.azurewebsites.net/api/annualholiday',$scope.holdayObject,{
+                        headers: {
+                                'Authorization': "Bearer" + " " + result.access_token
+                            }
+                    }).success(function(res){
+                        console.log(res)
+                        console.log('in add holiday scucess')
+                        $scope.loaderr = false;
+                        $scope.showSuccessAlert = true;
+                        $scope.isDataLoading = false;
+                    })
+                    .error(function(err){
+                        $scope.loaderr = false
+                        $scope.errorText = err.Message;
+                        $scope.showErrorAlert = true;
+                        console.log(err)
+                        $scope.isDataLoading = false;
+                    })
+                    
+                })
+        }
+        
+        User.getHolidays().success(function(res){
+            $scope.allHolidays=res;
+            console.log(res,'response')
+            $scope.isDataLoading = false;
+        })
+        .error(function(err){
+            console.log(err)
+            $scope.isDataLoading = false;
+        })
+        $scope.deleteHoliday=function(deleteIdd){
+            $scope.switchBool = function(value) {
+                    $scope[value] = !$scope[value];
+                };
+            User.deleteHoliday(deleteIdd).success(function(res){
+                console.log(res,'res')
+                 $scope.loaderr = false;
+                $scope.showSuccessAlertDelete = true;
+            })
+            .error(function(err){
+                console.log(err)
+                $scope.loaderr = false
+                $scope.errorText = err.Message;
+                $scope.showErrorAlert = true;
+            })
+        }
+        
+        $scope.navigateToUpdateHoliday = function() {
+            console.log("SSSS",$scope.allHolidays )
+            $scope.startdate = $scope.allHolidays[0].StartDate ;
+            $scope.enddate =  $scope.allHolidays[0].EndDate;
+            $scope.ttl = $scope.allHolidays[0].Title;
+            $scope.id = $scope.allHolidays[0].Id;
+            $scope.updateBtnShow=true;
+            $scope.saveBtnShow=false;
+            $scope.showgrid=false;      
+
+        }
+    $scope.update1=function(){
+        $scope.updateHolidayObject={
+                    "Id":$scope.id,
+                    "StartDate":$scope.startdate ,
+                    "EndDate" : $scope.enddate,
+                    "Title" : $scope.ttl
+                }
+                User.UpdateHoliday($scope.updateHolidayObject).success(function(res){
+                    console.log(res);
+                    console.log('successfuly updated');
+                    $scope.showgrid=true;
+                    // $scope.isDataLoading = false;
+                })
+                .error(function(err){
+                    console.log(err);
+                   
+                })
+    }
+    
+
+})
 app.controller('AppSingleuser',function($scope,User,$stateParams,$state){
         $scope.isDataLoading = true;
         $scope.NewPassword="";

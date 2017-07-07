@@ -1,3 +1,5 @@
+
+
 //app.js
 
 angular.module('Autotek', ['ui.router', 'Autotek.controller', 'CoreApi', 'LocalStorageModule', 'Autotek.directive', 'ui.calendar', 'ui.bootstrap'])
@@ -32,50 +34,55 @@ angular.module('Autotek', ['ui.router', 'Autotek.controller', 'CoreApi', 'LocalS
         .state('dashboard', {
             url: "/dashboard",
             templateUrl: "/EnglishTemplates/dashboard.html",
-            controller:"DashboardApiCtrl"
+            controller:"DashboardApiCtrl",
+            resolve: {
+                loginRequired: function(User) {
+                    return User.loginRequired();
+                }
+            }
         })
         .state('salesagents', {
             url: "/salesagents",
             templateUrl: "/EnglishTemplates/agents/index.html",
-            controller:"salesAgentsCtrl"
-            // resolve: {
-            //     loginRequired: function(User) {
-            //         return User.loginRequired();
-            //     }
-            // }
+            controller:"salesAgentsCtrl",
+            resolve: {
+                loginRequired: function(User) {
+                    return User.loginRequired();
+                }
+            }
         })
 
         .state('promotions', {
             url: "/promotions",
             templateUrl: "/EnglishTemplates/promotions/index.html",
-            controller:"PromotionCtrl"
-            // resolve: {
-            //     loginRequired: function(User) {
-            //         return User.loginRequired();
-            //     }
-            // }
+            controller:"PromotionCtrl",
+            resolve: {
+                loginRequired: function(User) {
+                    return User.loginRequired();
+                }
+            }
         })
 
         .state('holidays', {
             url: "/holidays",
             templateUrl: "/EnglishTemplates/holidays.html",
-            //controller:"PromotionCtrl"
-            // resolve: {
-            //     loginRequired: function(User) {
-            //         return User.loginRequired();
-            //     }
-            // }
+            controller: "annualHolidayConrtoller",
+            resolve: {
+                loginRequired: function(User) {
+                    return User.loginRequired();
+                }
+            }
         })
 
         .state('branchsetup', {
             url: "/branchsetup",
             templateUrl: "/EnglishTemplates/branchsetup.html",
-            controller:"BranchSetupCtrl"
-            // resolve: {
-            //     loginRequired: function(User) {
-            //         return User.loginRequired();
-            //     }
-            // }
+            controller:"BranchSetupCtrl",
+            resolve: {
+                loginRequired: function(User) {
+                    return User.loginRequired();
+                }
+            }
         })
 
         .state('appointcalender', {
@@ -102,33 +109,33 @@ angular.module('Autotek', ['ui.router', 'Autotek.controller', 'CoreApi', 'LocalS
         .state('servicesetup', {
             url: "/servicesetup",
             templateUrl: "/EnglishTemplates/servicesetup.html",
-            //controller:"BranchSetupCtrl"
-            // resolve: {
-            //     loginRequired: function(User) {
-            //         return User.loginRequired();
-            //     }
-            // }
+            controller: "serviceQueryCtrl",
+            resolve: {
+                loginRequired: function(User) {
+                    return User.loginRequired();
+                }
+            }
         })
         .state('companies', {
             url: "/companies",
             templateUrl: "/EnglishTemplates/companies/index.html",
-            controller: "companiesCtrl"
-            // resolve: {
-            //     loginRequired: function(User) {
-            //         return User.loginRequired();
-            //     }
-            // }
+            controller: "companiesCtrl",
+            resolve: {
+                loginRequired: function(User) {
+                    return User.loginRequired();
+                }
+            }
         })
 
         .state('mobileappusers', {
             url: "/mobileappusers",
             templateUrl: "/EnglishTemplates/appusers/index.html",
             controller: "mobile_app_users_page",
-            // resolve: {
-            //     loginRequired: function(User) {
-            //         return User.loginRequired();
-            //     }
-            // }
+            resolve: {
+                loginRequired: function(User) {
+                    return User.loginRequired();
+                }
+            }
         })
         .state('addMobileUser', {
             url: "/addMobileUser",
@@ -154,6 +161,11 @@ angular.module('Autotek', ['ui.router', 'Autotek.controller', 'CoreApi', 'LocalS
             url: "/updateCompany/:id",
             templateUrl: "/EnglishTemplates/companies/update.html",
             controller: "SingleCompany"
+        })
+        .state('updateHoliday', {
+            url: "/updateHoliday/:id",
+            templateUrl: "/EnglishTemplates/updateHolidays.html",
+            controller: "annualHolidayConrtoller"
         })
             .state('updatePromotion', {
             url: "/updatePromotion/:id",
@@ -263,6 +275,7 @@ angular.module('Autotek', ['ui.router', 'Autotek.controller', 'CoreApi', 'LocalS
 // .run(function(){
        
 // })
+
 
 .run(function($rootScope, $state, $location){
      

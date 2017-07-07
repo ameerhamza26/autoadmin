@@ -71,6 +71,7 @@ app.controller('LoginCtrl', function($scope, $rootScope, $window, $state, User, 
                                 })
                         });
                 }
+                
             })
             .error(function(err) {
                 console.log('error', err);
@@ -585,6 +586,291 @@ app.controller('SinglePromotion', function($scope, User, $stateParams, $state) {
 
     })
 
+app.controller('annualHolidayConrtoller',function($scope, User, $http,$state,$rootScope,$filter,$window){
+        $scope.startDate="";
+        $scope.endDate="";
+        $scope.title="";
+        $scope.isDataLoading = true;
+        $scope.allHolidays=[];
+        $scope.testDate="";
+        $scope.startdate="";
+        $scope.enddate="";
+        $scope.changeSrartDate="";
+        $scope.changeEndDate="";
+        $scope.ttl="";
+        $scope.id="";
+        $scope.newObject = {};
+        $scope.showgrid=true;
+        $scope.updateBtnShow=false;
+        $scope.saveBtnShow=true;
+
+        $scope.addAnnualHolday= function(){
+             
+              $scope.switchBool = function(value) {
+                    $scope[value] = !$scope[value];
+                };
+                $scope.loaderr = true;
+                $scope.showSuccessAlert = false;
+                $scope.showSuccessAlertDelete = false;
+                $scope.showErrorAlert = false;
+                $scope.errorText = "";
+
+
+            if($scope.startdate != "" && $scope.enddate != "" && $scope.ttl != ""){
+                var params = "grant_type=client_credentials&client_id=Android01&client_secret=21B5F798-BE55-42BC-8AA8-0025B903DC3B&scope=app1";
+                var formatedStartDate = $filter("date")($scope.startdate,'yyyy-MM-dd');
+                var formatedEndDate = $filter("date")($scope.enddate,'yyyy-MM-dd');
+                $scope.holdayObject={
+                    "StartDate":formatedStartDate,
+                    "EndDate":formatedEndDate,
+                    "Title" : $scope.ttl
+                } 
+                console.log('formated startdate when update',formatedStartDate);
+                console.log('formated enddate when update',formatedEndDate);
+                // $scope.user.UserName = $scope.user.MobileNumber;
+                var url = "http://autotecauth.azurewebsites.net/identity/connect/token";
+                $http.post(url, params,{ 
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
+                }).success(function(result){
+                    $http.post('http://autotecapi.azurewebsites.net/api/annualholiday',$scope.holdayObject,{
+                        headers: {
+                                'Authorization': "Bearer" + " " + result.access_token
+                            }
+                    }).success(function(res){
+                        console.log(res)
+                        console.log('in add holiday scucess')
+                        $scope.loaderr = false;
+                        $scope.showSuccessAlert = true;
+                        $scope.isDataLoading = false;
+                        $window.location.reload();
+                    })
+                    .error(function(err){
+                        $scope.loaderr = false
+                        $scope.errorText = err.Message;
+                        $scope.showErrorAlert = true;
+                        console.log(err)
+                        $scope.isDataLoading = false;
+                    })
+                    
+                })
+
+            } else{
+                alert("Please fill all the fields first");
+                $scope.loaderr = false;
+            }
+            
+        }
+        
+        User.getHolidays().success(function(res){
+            $scope.allHolidays=res;
+            console.log(res,'response')
+            $scope.isDataLoading = false;
+        })
+        .error(function(err){
+            console.log(err)
+            $scope.isDataLoading = false;
+        })
+        $scope.deleteHoliday=function(deleteIdd){
+            $scope.switchBool = function(value) {
+                    $scope[value] = !$scope[value];
+                };
+            User.deleteHoliday(deleteIdd).success(function(res){
+                console.log(res,'res')
+                 $scope.loaderr = false;
+                $scope.showSuccessAlertDelete = true;
+                $window.location.reload();
+            })
+            .error(function(err){
+                console.log(err)
+                $scope.loaderr = false
+                $scope.errorText = err.Message;
+                $scope.showErrorAlert = true;
+            })
+        }
+        
+        $scope.navigateToUpdateHoliday = function(object1) {
+            console.log("SSSS",$scope.allHolidays )
+             
+             $scope.startdate = $filter("date")(object1.StartDate,'yyyy-MM-dd');
+             $scope.enddate = $filter("date")(object1.EndDate,'yyyy-MM-dd');
+            $scope.ttl = object1.Title;
+            $scope.id = object1.Id;
+            $scope.updateBtnShow=true;
+            $scope.saveBtnShow=false;
+            $scope.showgrid=false;      
+            console.log($scope.startdate,'start date')
+            console.log($scope.enddate ,'end date')
+            // console.log($scope.ttl,'title')
+            // console.log(object1.EndDate,'end date')
+        }
+    $scope.update1=function(){
+
+        if($scope.startdate != null && $scope.enddate != null && $scope.ttl != ""){
+
+        var formatedStartDate = $filter("date")($scope.startdate,'yyyy-MM-dd');
+        var formatedEndDate = $filter("date")($scope.enddate,'yyyy-MM-dd');
+            
+        console.log('formated startdate when update',formatedStartDate);
+        console.log('formated enddate when update',formatedEndDate);
+            $scope.updateHolidayObject={
+                    "Id":$scope.id,
+                    "StartDate":formatedStartDate,
+                    "EndDate" : formatedEndDate,
+                    "Title" : $scope.ttl
+                }
+
+                console.log($scope.updateHolidayObject,'updated object')
+                User.UpdateHoliday($scope.updateHolidayObject).success(function(res){
+                    console.log(res);
+                    console.log('successfuly updated');
+                    $scope.showgrid=true;
+                    $window.location.reload();
+                    // $scope.isDataLoading = false;
+                })
+                .error(function(err){
+                    console.log(err);
+                });
+        } else{
+            alert('Please fill all the fields first');
+        }
+    }
+    
+
+})
+app.controller('serviceQueryCtrl', function($scope, User, $http,$state,$rootScope,$window){
+
+        $scope.serviceTitleEn="";
+        $scope.serviceTitleAr="";
+        $scope.serviceDuration="";
+        $scope.serviceDescEn = "";
+        $scope.serviceDescAR = "";
+        $scope.id="";
+        $scope.showgrid=true;
+        $scope.updateBtnShow=false;
+        $scope.saveBtnShow=true;
+        $scope.customService={};
+        $scope.allServices=[];
+        $scope.isDataLoading = true;
+        $scope.saveBtnShow=true;
+        
+        $scope.addService= function(){
+             
+              $scope.switchBool = function(value) {
+                $scope[value] = !$scope[value];
+            };
+            $scope.loaderr = true;
+            $scope.showSuccessAlert = false;
+            $scope.showSuccessAlertDelete = false;
+            $scope.showErrorAlert = false;
+            $scope.errorText = "";
+
+            if($scope.serviceTitleEn != "" && $scope.serviceTitleAr != "" && $scope.serviceDuration != "" && $scope.serviceDescEn != "" && $scope.serviceDescAR != ""){
+            var params = "grant_type=client_credentials&client_id=Android01&client_secret=21B5F798-BE55-42BC-8AA8-0025B903DC3B&scope=app1";
+            $scope.customService={
+                "Title_Eng" :$scope.serviceTitleEn,
+                "Title_Ar":$scope.serviceTitleAr,
+                "DurationInMin" : $scope.serviceDuration,
+                "Description_Eng" : $scope.serviceDescEn,
+                "Description_Ar":$scope.serviceDescAR
+            } 
+            console.log('holiday object',$scope.holdayObject)
+                // $scope.user.UserName = $scope.user.MobileNumber;
+                var url = "http://autotecauth.azurewebsites.net/identity/connect/token";
+                $http.post(url, params,{ 
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
+                }).success(function(result){
+                    $http.post('http://autotecapi.azurewebsites.net/api/service',$scope.customService,{
+                        headers: {
+                                'Authorization': "Bearer" + " " + result.access_token
+                            }
+                    }).success(function(res){
+                        console.log(res)
+                        console.log('in add holiday scucess')
+                        $scope.loaderr = false;
+                        $scope.showSuccessAlert = true;
+                        $scope.isDataLoading = false;
+                        $window.location.reload();
+                    })
+                    .error(function(err){
+                        $scope.loaderr = false;
+                        $scope.errorText = err.Message;
+                        $scope.showErrorAlert = true;
+                        console.log(err)
+                        $scope.isDataLoading = false;
+                    })
+                    
+                })
+            }else{
+                alert("Please fill all the fields first");
+                $scope.loaderr = false;
+            }
+        
+        }
+        
+             User.getServices().success(function(res){
+            $scope.allServices=res;
+            console.log(res,'response service')
+            $scope.isDataLoading = false;
+        })
+        .error(function(err){
+            console.log(err)
+            $scope.isDataLoading = false;
+        })
+        
+        $scope.DeleteService=function(deleteIdd){
+            $scope.switchBool = function(value) {
+                    $scope[value] = !$scope[value];
+                };
+            User.deleteService(deleteIdd).success(function(res){
+                console.log(res,'res')
+                 $scope.loaderr = false;
+                $scope.showSuccessAlertDelete = true;
+                $window.location.reload();
+            })
+            .error(function(err){
+                console.log(err)
+                $scope.loaderr = false
+                $scope.errorText = err.Message;
+                $scope.showErrorAlert = true;
+            })
+        }
+        $scope.navigateToServiceUpdate=function(serviceObject){
+             $scope.id= serviceObject.Id;
+            $scope.serviceTitleEn=serviceObject.Title_Eng;
+            $scope.serviceTitleAr=serviceObject.Title_Ar;
+            $scope.serviceDuration=serviceObject.DurationInMin;
+            $scope.serviceDescEn = serviceObject.Description_Eng;
+            $scope.serviceDescAR = serviceObject.Description_Ar;
+            $scope.updateBtnShow=true;
+            $scope.saveBtnShow=false;
+            $scope.showgrid=false;
+        }
+        $scope.updateService=function(){
+           
+            if($scope.serviceTitleEn != "" && $scope.serviceTitleAr != "" && $scope.serviceDuration != "" && $scope.serviceDescEn != "" && $scope.serviceDescAR != ""){
+                 $scope.customService={
+                  "Id" :$scope.id,
+                  "Title_Eng" : $scope.serviceTitleEn,
+                  "Title_Ar" : $scope.serviceTitleAr, 
+                  "DurationInMin" : $scope.serviceDuration, 
+                  "Description_Eng" : $scope.serviceDescEn , 
+                  "Description_Ar" :$scope.serviceDescAR 
+                 }
+                User.UpdateService($scope.customService).success(function(res){
+                  console.log(res)
+                   $scope.showgrid=true;
+                   $window.location.reload();
+               })
+                .error(function(err){
+                console.log(err);
+            })
+            }  else{
+                alert("Please fill all the fields first");
+            }
+           
+        }
+
+})
 
 app.controller('addNewAppUser', function($scope, User, $http) {
         $scope.regex = '^[a-zA-Z]+[a-zA-Z0-9._-]+@[a-z]+\.[a-z.]{2,5}$';
@@ -1034,7 +1320,87 @@ app.controller('addNewSalesAgent', function($state, $scope, User, $http) {
 
     })
 
-app.controller('BranchSetupCtrl', function($scope) {
+app.controller('BranchSetupCtrl', function($scope,User) {
+
+    $scope.branchNameEn="";
+    $scope.brancNameAr="";
+    $scope.branchAddress="";
+    $scope.latitude="";
+    $scope.longitude="";
+    $scope.cityId="";
+    $scope.allCities =[];
+    $scope.showgrid=true;
+    $scope.updateBtnShow=false;
+    $scope.saveBtnShow=true;
+    $scope.isDataLoading=true;
+    User.getCities().success(function(res){
+        $scope.allCities=res;
+        console.log('cities',$scope.allCities.CityName)
+    })
+    .error(function(err){
+        console.log(err)
+    })
+    $scope.getId = function() {
+            console.log($scope.cityId.CityId);
+        }
+            $scope.addBranch= function(){
+             
+              $scope.switchBool = function(value) {
+                    $scope[value] = !$scope[value];
+                };
+                $scope.loaderr = true;
+                $scope.showSuccessAlert = false;
+                $scope.showSuccessAlertDelete = false;
+                $scope.showErrorAlert = false;
+                $scope.errorText = "";
+
+
+            if($scope.branchNameEn !="" && $scope.brancNameAr !=""  && $scope.branchAddress !="" && $scope.latitude !="" && $scope.longitude !=""){
+                var params = "grant_type=client_credentials&client_id=Android01&client_secret=21B5F798-BE55-42BC-8AA8-0025B903DC3B&scope=app1";
+                $scope.brancObject={
+                    "CityId":$scope.cityId.CityId,
+                    "BranchName":$scope.branchNameEn,
+                    "BranchNameInArabic" : $scope.brancNameAr,
+                    "Address" : $scope.branchAddress,
+                    "Longitude" : $scope.longitude,
+                    "Latitude" : $scope.latitude
+                } 
+                var url = "http://autotecauth.azurewebsites.net/identity/connect/token";
+                $http.post(url, params,{ 
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
+                }).success(function(result){
+                    $http.post('http://autotecapi.azurewebsites.net/api/branch',$scope.brancObject,{
+                        headers: {
+                                'Authorization': "Bearer" + " " + result.access_token
+                            }
+                    }).success(function(res){
+                        console.log(res)
+                        console.log('in add branch scucess')
+                        $scope.loaderr = false;
+                        $scope.showSuccessAlert = true;
+                        $scope.isDataLoading = false;
+                        $window.location.reload();
+                    })
+                    .error(function(err){
+                        $scope.loaderr = false
+                        $scope.errorText = err.Message;
+                        $scope.showErrorAlert = true;
+                        console.log(err)
+                        $scope.isDataLoading = false;
+                    })
+                    
+                })
+
+            } else{
+                alert("Please fill all the fields first");
+                $scope.loaderr = false;
+            }
+            
+        }
+
+        
+        
+
     $scope.tabs = [
         true, false, false, false
     ]

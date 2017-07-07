@@ -199,6 +199,11 @@ angular.module('AutotekArabic', ['ui.router', 'AutotekArabic.controller', 'CoreA
             templateUrl: "../arabic/ArabicPages/promotions/detail.html",
             controller:"SinglePromotion",
         })
+        .state('holidaysa', {
+            url: "/holidaysa",
+            templateUrl: "../arabic/ArabicPages/holidays.html",
+            controller: "annualHolidayConrtoller"
+        })
         //  .state('dashboarda', {
         //     url: "/dashboarda",
         //     templateUrl: "/ArabicPages/dashboard.html"
@@ -232,7 +237,7 @@ angular.module('AutotekArabic', ['ui.router', 'AutotekArabic.controller', 'CoreA
 
 .run(function($rootScope, $state, $location){
      
-   $rootScope.actives = [true, false,false,false,false,false];
+   $rootScope.actives = [true, false,false,false,false,false, false, false, false, false, false];
    $rootScope.navigateState = function(state) {
        $state.go(state)
 

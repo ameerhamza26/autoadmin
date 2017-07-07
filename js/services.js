@@ -51,6 +51,13 @@ angular.module('CoreApi', ['CoreApiUtilities'])
         var url = httpService.Utils.buildUrl(new Array('api', 'users', 'changepassword'));
         return httpService.$http.post(url, passwordchange, config);
     }
+     this.addHoliday = function(holidayCustom) {
+        // var params = httpService.Utils.getStringParams(param);
+        var config = httpService.Utils.getHeader();
+        var url = httpService.Utils.buildUrl(new Array('api', 'annualholiday'));
+        return httpService.$http.post(url, holidayCustom, config);
+    }
+
 
 
     this.getUser = function() {
@@ -94,6 +101,16 @@ angular.module('CoreApi', ['CoreApiUtilities'])
         var url = httpService.Utils.buildUrl(new Array('api', 'companies', pageNumber, pageSize));
         return httpService.$http.get(url, config);
     }
+    this.getHolidays = function(pageNumber, pageSize) {
+        var config = httpService.Utils.getHeader();
+        var url = httpService.Utils.buildUrl(new Array('api', 'annualholiday', pageNumber, pageSize));
+        return httpService.$http.get(url, config);
+    }
+    this.getServices = function(pageNumber, pageSize) {
+        var config = httpService.Utils.getHeader();
+        var url = httpService.Utils.buildUrl(new Array('api', 'service', pageNumber, pageSize));
+        return httpService.$http.get(url, config);
+    }
 
     this.getCompaniesCount = function(param1, param2) {
         var config = httpService.Utils.getHeader();
@@ -126,6 +143,16 @@ angular.module('CoreApi', ['CoreApiUtilities'])
         return httpService.$http.get(url, config);
     }
 
+    this.getCities = function(pageNumber, pageSize) {
+        var config = httpService.Utils.getHeader();
+        var url = httpService.Utils.buildUrl(new Array('api', 'cities'));
+        return httpService.$http.get(url, config);
+    }
+    this.getBranches = function(pageNumber, pageSize) {
+        var config = httpService.Utils.getHeader();
+        var url = httpService.Utils.buildUrl(new Array('api', 'branch'));
+        return httpService.$http.get(url, config);
+    }
     this.getPromotions = function(pageNumber, pageSize) {
         var config = httpService.Utils.getHeader();
         var url = httpService.Utils.buildUrl(new Array('api', 'discountoffers', pageNumber, pageSize));
@@ -152,6 +179,16 @@ angular.module('CoreApi', ['CoreApiUtilities'])
         var url = httpService.Utils.buildUrl(new Array('api', 'customers', Id));
         return httpService.$http.delete(url, config);
     }
+    this.deleteHoliday = function(Id) {
+        var config = httpService.Utils.getHeader();
+        var url = httpService.Utils.buildUrl(new Array('api', 'annualholiday', Id));
+        return httpService.$http.delete(url, config);
+    }
+    this.deleteService= function(Id) {
+        var config = httpService.Utils.getHeader();
+        var url = httpService.Utils.buildUrl(new Array('api', 'service', Id));
+        return httpService.$http.delete(url, config);
+    }
     this.deleteCompany = function(Id) {
         var config = httpService.Utils.getHeader();
         var url = httpService.Utils.buildUrl(new Array('api', 'companies', Id));
@@ -166,6 +203,16 @@ angular.module('CoreApi', ['CoreApiUtilities'])
         var config = httpService.Utils.getHeader();
         var url = httpService.Utils.buildUrl(new Array('api', 'discountoffers', Id));
         return httpService.$http.delete(url, config);
+    }
+     this.UpdateHoliday = function(Holiday) {
+        var config = httpService.Utils.getHeader();
+        var url = httpService.Utils.buildUrl(new Array('api', 'annualholiday'));
+        return httpService.$http.put(url, Holiday, config);
+    }
+    this.UpdateService= function(Holiday) {
+        var config = httpService.Utils.getHeader();
+        var url = httpService.Utils.buildUrl(new Array('api', 'service'));
+        return httpService.$http.put(url, Holiday, config);
     }
     this.UpdateSingleAppUser = function(user, Id) {
         var config = httpService.Utils.getHeader();
